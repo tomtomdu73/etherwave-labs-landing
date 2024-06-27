@@ -5,7 +5,9 @@ import tag from './schemaTypes/tag'
 import post from './schemaTypes/post'
 import author from './schemaTypes/author'
 import youtubeVideo from './schemaTypes/youtubeVideo'
+import project from './schemaTypes/project'
+import stack from './schemaTypes/stack'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, tag, blockContent, youtubeVideo],
+  types: [post, author, tag, blockContent, youtubeVideo, project, stack],
 }
