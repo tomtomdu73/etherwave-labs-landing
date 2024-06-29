@@ -18,13 +18,11 @@ import logoMailSmirk from '@/images/clients/mail-smirk/logo-dark.svg'
 import logoNorthAdventures from '@/images/clients/north-adventures/logo-dark.svg'
 import logoPhobia from '@/images/clients/phobia/logo-dark.svg'
 import logoUnseal from '@/images/clients/unseal/logo-dark.svg'
-import { formatDate } from '@/lib/formatDate'
-import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
-import { Project, getProjects } from '@/lib/sanity/project.query'
+import { ProjectType, getProjects } from '@/lib/sanity/project.query'
 import { urlForImage } from '../../../../sanity/lib/image'
 import moment from 'moment'
 
-function Projects({ projects }: { projects: Project[] }) {
+function ProjectsList({ projects }: { projects: ProjectType[] }) {
   return (
     <Container className="mt-40">
       <FadeIn>
@@ -130,8 +128,8 @@ export const metadata: Metadata = {
     'We believe in efficiency and maximizing our resources to provide the best value to our clients.',
 }
 
-export default async function Work() {
-  const projects = (await getProjects()) as Project[]
+export default async function Projects() {
+  const projects = (await getProjects()) as ProjectType[]
 
   return (
     <>
@@ -143,7 +141,7 @@ export default async function Work() {
         </p>
       </PageIntro>
 
-      <Projects projects={projects} />
+      <ProjectsList projects={projects} />
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"

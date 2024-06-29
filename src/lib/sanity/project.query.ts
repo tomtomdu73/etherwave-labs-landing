@@ -3,7 +3,7 @@ import { Image, PortableTextBlock } from 'sanity'
 
 import { client } from '../../../sanity/lib/client'
 
-export interface Project {
+export interface ProjectType {
   id: string
   title: string
   description: string
@@ -16,7 +16,7 @@ export interface Project {
   endAt: string
 }
 
-export async function getProject(slug: string): Promise<Project> {
+export async function getProject(slug: string): Promise<ProjectType> {
   return client.fetch(
     groq`*[_type == "project" && slug.current == "${slug}"][0]{
         "id": _id,
@@ -33,9 +33,9 @@ export async function getProject(slug: string): Promise<Project> {
   )
 }
 
-export async function getProjects(): Promise<Project[]> {
+export async function getProjects(): Promise<ProjectType[]> {
   return client.fetch(
-    groq`*[_type == "project"] | order(title desc){
+    groq`*[_type == "project"] | order(endDate desc){
         "id": _id,
         title,
         "slug": slug.current,
