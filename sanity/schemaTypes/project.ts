@@ -12,10 +12,32 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'string',
       validation: (Rule) => Rule.required().max(300),
+    }),
+    defineField({
+      name: 'startAt',
+      title: 'Start Date',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'endAt',
+      title: 'End Date',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'projectUrl',
@@ -63,4 +85,10 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'logo',
+    },
+  },
 })

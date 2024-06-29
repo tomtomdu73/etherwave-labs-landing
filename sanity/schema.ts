@@ -9,5 +9,5 @@ import project from './schemaTypes/project'
 import stack from './schemaTypes/stack'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, tag, blockContent, youtubeVideo, project, stack],
+  types: [author, blockContent, post, project, stack, tag, youtubeVideo],
 }
