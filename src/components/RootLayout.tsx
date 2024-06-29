@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react'
+import { createContext, useContext, useEffect, useId, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -69,16 +62,8 @@ function Header({
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <Logomark
-            className="h-8 sm:hidden"
-            invert={invert}
-            filled={logoHovered}
-          />
-          <Logo
-            className="hidden h-8 sm:block"
-            invert={invert}
-            filled={logoHovered}
-          />
+          <Logomark className="h-8 sm:hidden" invert={invert} filled={logoHovered} />
+          <Logo className="hidden h-8 sm:block" invert={invert} filled={logoHovered} />
         </Link>
         <div className="flex items-center gap-x-8">
           <Button href="/contact" invert={invert}>
@@ -121,13 +106,7 @@ function NavigationRow({ children }: { children: React.ReactNode }) {
   )
 }
 
-function NavigationItem({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
+function NavigationItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
       href={href}
@@ -195,9 +174,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
             expanded={expanded}
             onToggle={() => {
               setExpanded((expanded) => !expanded)
-              window.setTimeout(() =>
-                closeRef.current?.focus({ preventScroll: true }),
-              )
+              window.setTimeout(() => closeRef.current?.focus({ preventScroll: true }))
             }}
           />
         </div>
@@ -221,9 +198,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                 expanded={expanded}
                 onToggle={() => {
                   setExpanded((expanded) => !expanded)
-                  window.setTimeout(() =>
-                    openRef.current?.focus({ preventScroll: true }),
-                  )
+                  window.setTimeout(() => openRef.current?.focus({ preventScroll: true }))
                 }}
               />
             </div>
@@ -232,18 +207,11 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div>
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
-                    </h2>
-                    <Offices
-                      invert
-                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
-                    />
+                    <h2 className="font-display text-base font-semibold text-white">Our offices</h2>
+                    <Offices invert className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2" />
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Follow us
-                    </h2>
+                    <h2 className="font-display text-base font-semibold text-white">Follow us</h2>
                     <SocialMedia className="mt-6" invert />
                   </div>
                 </div>
@@ -258,10 +226,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
         style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
         className="relative flex flex-auto overflow-hidden bg-white pt-14"
       >
-        <motion.div
-          layout
-          className="relative isolate flex w-full flex-col pt-9"
-        >
+        <motion.div layout className="relative isolate flex w-full flex-col pt-9">
           <GridPattern
             className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
             yOffset={-96}
