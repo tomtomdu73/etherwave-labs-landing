@@ -20,72 +20,63 @@ import logoPhobia from '@/images/clients/phobia/logo-dark.svg'
 import logoUnseal from '@/images/clients/unseal/logo-dark.svg'
 import { formatDate } from '@/lib/formatDate'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
+import { Project, getProjects } from '@/lib/sanity/project.query'
+import { urlForImage } from '../../../../sanity/lib/image'
+import moment from 'moment'
 
-function CaseStudies({
-  caseStudies,
-}: {
-  caseStudies: Array<MDXEntry<CaseStudy>>
-}) {
+function Projects({ projects }: { projects: Project[] }) {
   return (
     <Container className="mt-40">
       <FadeIn>
-        <h2 className="font-display text-2xl font-semibold text-neutral-950">
-          Case studies
-        </h2>
+        <h2 className="font-display text-2xl font-semibold text-neutral-950">Projects</h2>
       </FadeIn>
       <div className="mt-10 space-y-20 sm:space-y-24 lg:space-y-32">
-        {caseStudies.map((caseStudy) => (
-          <FadeIn key={caseStudy.client}>
+        {projects.map((project) => (
+          <FadeIn key={project.id}>
             <article>
               <Border className="grid grid-cols-3 gap-x-8 gap-y-8 pt-16">
                 <div className="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
                   <div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
                     <Image
-                      src={caseStudy.logo}
+                      width={1400}
+                      height={1400}
+                      src={urlForImage(project.logo)}
                       alt=""
                       className="h-16 w-16 flex-none"
                       unoptimized
                     />
                     <h3 className="mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8">
-                      {caseStudy.client}
+                      {project.title}
                     </h3>
                   </div>
                   <div className="mt-1 flex gap-x-4 sm:mt-0 lg:block">
                     <p className="text-sm tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
-                      {caseStudy.service}
+                      {project.stacks.join(' - ')}
                     </p>
                     <p className="text-sm text-neutral-950 lg:mt-2">
-                      <time dateTime={caseStudy.date}>
-                        {formatDate(caseStudy.date)}
+                      <time dateTime={moment(project.endAt).format('YYYY')}>
+                        {moment(project.endAt).format('YYYY')}
                       </time>
                     </p>
                   </div>
                 </div>
                 <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
                   <p className="font-display text-4xl font-medium text-neutral-950">
-                    <Link href={caseStudy.href}>{caseStudy.title}</Link>
+                    <Link href={project.slug}>{project.title}</Link>
                   </p>
                   <div className="mt-6 space-y-6 text-base text-neutral-600">
-                    {caseStudy.summary.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
+                    <p>{project.description}</p>
                   </div>
                   <div className="mt-8 flex">
-                    <Button
-                      href={caseStudy.href}
-                      aria-label={`Read case study: ${caseStudy.client}`}
-                    >
+                    <Button href={project.slug} aria-label={`Read case study: ${project.title}`}>
                       Read case study
                     </Button>
                   </div>
-                  {caseStudy.testimonial && (
-                    <Blockquote
-                      author={caseStudy.testimonial.author}
-                      className="mt-12"
-                    >
-                      {caseStudy.testimonial.content}
+                  {/* {project.testimonial && (
+                    <Blockquote author={project.testimonial.author} className="mt-12">
+                      {project.testimonial.content}
                     </Blockquote>
-                  )}
+                  )} */}
                 </div>
               </Border>
             </article>
@@ -117,10 +108,7 @@ function Clients() {
       </FadeIn>
       <FadeInStagger className="mt-10" faster>
         <Border as={FadeIn} />
-        <ul
-          role="list"
-          className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-4"
-        >
+        <ul role="list" className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-4">
           {clients.map(([client, logo]) => (
             <li key={client} className="group">
               <FadeIn className="overflow-hidden">
@@ -143,29 +131,26 @@ export const metadata: Metadata = {
 }
 
 export default async function Work() {
-  let caseStudies = await loadCaseStudies()
+  const projects = (await getProjects()) as Project[]
 
   return (
     <>
-      <PageIntro
-        eyebrow="Our work"
-        title="Proven solutions for real-world problems."
-      >
+      <PageIntro eyebrow="Our work" title="Proven solutions for real-world problems.">
         <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
+          We believe in efficiency and maximizing our resources to provide the best value to our
+          clients. The primary way we do that is by re-using the same five projects we’ve been
+          developing for the past decade.
         </p>
       </PageIntro>
 
-      <CaseStudies caseStudies={caseStudies} />
+      <Projects projects={projects} />
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
         client={{ name: 'Mail Smirk', logo: logoMailSmirk }}
       >
-        We approached <em>Studio</em> because we loved their past work. They
-        delivered something remarkably similar in record time.
+        We approached <em>Studio</em> because we loved their past work. They delivered something
+        remarkably similar in record time.
       </Testimonial>
 
       <Clients />
