@@ -18,6 +18,13 @@ export default {
       '7xl': ['4rem', { lineHeight: '4.5rem' }],
     },
     extend: {
+      colors: {
+        brand: {
+          '100': '#e0f9ff',
+          '400': '#287b8c',
+          '500': '#166070',
+        },
+      },
       borderRadius: {
         '4xl': '2.5rem',
       },

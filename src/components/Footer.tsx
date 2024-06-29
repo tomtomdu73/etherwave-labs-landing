@@ -49,10 +49,7 @@ function Navigation() {
             <ul role="list" className="mt-4 text-sm text-neutral-700">
               {section.links.map((link, linkIndex) => (
                 <li key={linkIndex} className="mt-4">
-                  <Link
-                    href={link.href}
-                    className="transition hover:text-neutral-950"
-                  >
+                  <Link href={link.href} className="transition hover:text-neutral-950">
                     {link.title}
                   </Link>
                 </li>
@@ -85,8 +82,7 @@ function NewsletterForm() {
         Sign up for our newsletter
       </h2>
       <p className="mt-4 text-sm text-neutral-700">
-        Subscribe to get the latest design news, articles, resources and
-        inspiration.
+        Subscribe to get the latest design news, articles, resources and inspiration.
       </p>
       <div className="relative mt-6">
         <input
@@ -100,7 +96,7 @@ function NewsletterForm() {
           <button
             type="submit"
             aria-label="Submit"
-            className="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800"
+            className="bg-brand-500 flex aspect-square h-full items-center justify-center rounded-xl text-white transition hover:bg-neutral-800"
           >
             <ArrowIcon className="w-4" />
           </button>
@@ -124,9 +120,7 @@ export function Footer() {
           <Link href="/" aria-label="Home">
             <Logo className="h-8" fillOnHover />
           </Link>
-          <p className="text-sm text-neutral-700">
-            © Studio Agency Inc. {new Date().getFullYear()}
-          </p>
+          <p className="text-sm text-neutral-700">©Etherwave Labs. {new Date().getFullYear()}</p>
         </div>
       </FadeIn>
     </Container>

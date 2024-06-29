@@ -36,13 +36,13 @@ const clients = [
 
 function Clients() {
   return (
-    <div className="mt-24 bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+    <div className="bg-brand-500 mt-24 py-20 sm:mt-32 sm:py-32 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
             We’ve worked with hundreds of amazing people
           </h2>
-          <div className="h-px flex-auto bg-neutral-800" />
+          <div className="bg-brand-400 h-px flex-auto" />
         </FadeIn>
         <FadeInStagger faster>
           <ul role="list" className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
@@ -76,9 +76,9 @@ function Projects({ projects }: { projects: Project[] }) {
         <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {projects.map((project) => (
             <FadeIn key={project.slug} className="flex">
-              <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50 sm:p-8">
+              <article className="hover:bg-brand-100/50 relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out sm:p-8">
                 <h3>
-                  <Link href={project.slug}>
+                  <Link href={'projects' + project.slug}>
                     <span className="absolute inset-0 rounded-3xl" />
                     <Image
                       src={urlForImage(project.logo)}
