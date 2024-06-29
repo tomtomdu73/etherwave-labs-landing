@@ -60,13 +60,16 @@ function ProjectsList({ projects }: { projects: ProjectType[] }) {
                 </div>
                 <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
                   <p className="font-display text-4xl font-medium text-neutral-950">
-                    <Link href={project.slug}>{project.title}</Link>
+                    <Link href={'projects/' + project.slug}>{project.title}</Link>
                   </p>
                   <div className="mt-6 space-y-6 text-base text-neutral-600">
                     <p>{project.description}</p>
                   </div>
                   <div className="mt-8 flex">
-                    <Button href={project.slug} aria-label={`Read case study: ${project.title}`}>
+                    <Button
+                      href={'projects/' + project.slug}
+                      aria-label={`Read case study: ${project.title}`}
+                    >
                       Read case study
                     </Button>
                   </div>

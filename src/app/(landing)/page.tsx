@@ -78,7 +78,7 @@ function Projects({ projects }: { projects: Project[] }) {
             <FadeIn key={project.slug} className="flex">
               <article className="hover:bg-brand-100/50 relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out sm:p-8">
                 <h3>
-                  <Link href={'projects' + project.slug}>
+                  <Link href={'projects/' + project.slug}>
                     <span className="absolute inset-0 rounded-3xl" />
                     <Image
                       src={urlForImage(project.logo)}
