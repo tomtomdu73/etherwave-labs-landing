@@ -31,6 +31,7 @@ export default defineType({
       name: 'keywords',
       title: 'Keywords',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'author',

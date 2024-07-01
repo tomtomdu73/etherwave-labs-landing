@@ -9,6 +9,40 @@ import { PageIntro } from '@/components/PageIntro'
 import { PageLinks } from '@/components/PageLinks'
 import { ProjectType, getProject } from '@/lib/sanity/project.query'
 import { urlForImage } from '../../../../../sanity/lib/image'
+import { ResolvingMetadata } from 'next'
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const article = (await getProject(params.slug)) as ProjectType
+
+  return {
+    title: article.title + ' - Etherwave Labs',
+    description: article.description,
+    openGraph: {
+      title: article.title + ' - Etherwave Labs',
+      description: article.description,
+      url: `${process.env.APP_URL}/blog/${params.slug}`,
+      siteName: 'Etherwave Labs',
+      images: [
+        {
+          url: urlForImage(article.image),
+          width: 800,
+          height: 600,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title + ' - Etherwave Labs',
+      description: article.description,
+      images: [urlForImage(article.image)],
+    },
+  }
+}
 
 export default async function Project({ params }: { params: { slug: string } }) {
   // let allCaseStudies = await loadCaseStudies()
