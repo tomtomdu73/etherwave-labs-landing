@@ -22,6 +22,17 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+      validation: (Rule) => Rule.required().min(50).max(155),
+    }),
+    defineField({
+      name: 'keywords',
+      title: 'Keywords',
+      type: 'string',
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
