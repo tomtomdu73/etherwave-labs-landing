@@ -16,6 +16,11 @@ export interface ProjectType {
   endAt: string
 }
 
+export interface ProjectSlugType {
+  slug: string
+  updatedAt: string
+}
+
 export async function getProject(slug: string): Promise<ProjectType> {
   return client.fetch(
     groq`*[_type == "project" && slug.current == "${slug}"][0]{
@@ -46,6 +51,16 @@ export async function getProjects(): Promise<ProjectType[]> {
         "stacks": stacks[]->title,
         startAt,
         endAt,
+      }`,
+  )
+}
+
+export async function getAllProjectsSlug(): Promise<ProjectSlugType[]> {
+  return client.fetch(
+    groq`
+          *[_type == "project"] {
+              "slug": slug.current,
+              "updatedAt": _updatedAt
       }`,
   )
 }

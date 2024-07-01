@@ -21,6 +21,11 @@ export interface Post {
   publishedAt: string
 }
 
+export interface PostSlugType {
+  slug: string
+  updatedAt: string
+}
+
 export async function getPost(slug: string): Promise<Post> {
   return client.fetch(
     groq`*[_type == "post" && slug.current == "${slug}"][0]{
@@ -87,11 +92,12 @@ export async function getPostsbyCategory(category: string): Promise<Post[]> {
   )
 }
 
-export async function getAllPostsSlug(): Promise<string[]> {
+export async function getAllPostsSlug(): Promise<PostSlugType[]> {
   return client.fetch(
     groq`
           *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
               "slug": slug.current,
+              "updatedAt": _updatedAt
       }`,
   )
 }
