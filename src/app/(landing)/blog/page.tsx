@@ -25,8 +25,8 @@ export default async function Blog() {
     <>
       <PageIntro eyebrow="Blog" title="The latest articles and news">
         <p>
-          Stay up-to-date with the latest industry news as our marketing teams
-          finds new ways to re-purpose old CSS tricks articles.
+          Stay up-to-date with the latest industry news as our marketing teams finds new ways to
+          re-purpose old CSS tricks articles.
         </p>
       </PageIntro>
 
@@ -39,9 +39,7 @@ export default async function Blog() {
                   <div className="relative lg:-mx-4 lg:flex lg:justify-end">
                     <div className="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
                       <h2 className="font-display text-2xl font-semibold text-neutral-950">
-                        <Link href={'blog/' + article.slug}>
-                          {article.title}
-                        </Link>
+                        <Link href={'blog/' + article.slug}>{article.title}</Link>
                       </h2>
                       <dl className="lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-4">
                         <dt className="sr-only">Published</dt>
@@ -60,9 +58,7 @@ export default async function Blog() {
                               src={urlForImage(article.author.image)}
                               className="h-12 w-12 rounded-full object-cover"
                             />
-                            <span className="font-semibold">
-                              {article.author.name}
-                            </span>
+                            <span className="font-semibold">{article.author.name}</span>
                           </div>
                         </dd>
                       </dl>

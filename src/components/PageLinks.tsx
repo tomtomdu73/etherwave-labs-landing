@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -6,46 +7,38 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
 import { SectionIntro } from '@/components/SectionIntro'
-import { formatDate } from '@/lib/formatDate'
+import { urlForImage } from '../../sanity/lib/image'
 
 function ArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 24 6" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M24 3 18 .5v2H0v1h18v2L24 3Z"
-      />
+      <path fillRule="evenodd" clipRule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z" />
     </svg>
   )
 }
 
 interface Page {
-  href: string
-  date: string
+  slug: string
   title: string
   description: string
+  image: Image
 }
 
 function PageLink({ page }: { page: Page }) {
   return (
-    <article key={page.href}>
-      <Border
-        position="left"
-        className="relative flex flex-col items-start pl-8"
-      >
-        <h3 className="mt-6 text-base font-semibold text-neutral-950">
-          {page.title}
-        </h3>
-        <time
-          dateTime={page.date}
-          className="order-first text-sm text-neutral-600"
-        >
-          {formatDate(page.date)}
-        </time>
+    <article key={page.slug}>
+      <Border position="left" className="relative flex flex-col items-start pl-8">
+        <h3 className="mt-6 text-base font-semibold text-neutral-950">{page.title}</h3>
         <p className="mt-2.5 text-base text-neutral-600">{page.description}</p>
+        <Image
+          src={urlForImage(page.image)}
+          width={300}
+          height={300}
+          alt={page.title}
+          className="2-48 mt-6 h-48 object-cover"
+        />
         <Link
-          href={page.href}
+          href={page.slug}
           className="mt-6 flex gap-x-3 text-base font-semibold text-neutral-950 transition hover:text-neutral-700"
           aria-label={`Read more: ${page.title}`}
         >

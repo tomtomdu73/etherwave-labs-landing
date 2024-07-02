@@ -1,15 +1,13 @@
 import moment from 'moment'
+import { Metadata, ResolvingMetadata } from 'next'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { GrayscaleTransitionImage } from '@/components/GrayscaleTransitionImage'
-import { MDXComponents } from '@/components/MDXComponents'
 import { PageIntro } from '@/components/PageIntro'
-import { PageLinks } from '@/components/PageLinks'
 import { ProjectType, getProject } from '@/lib/sanity/project.query'
 import { urlForImage } from '../../../../../sanity/lib/image'
-import { ResolvingMetadata } from 'next'
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },

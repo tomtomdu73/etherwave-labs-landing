@@ -97,6 +97,9 @@ export async function getAllPostsSlug(): Promise<PostSlugType[]> {
     groq`
           *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
               "slug": slug.current,
+              title,
+              description,
+              "image": mainImage,
               "updatedAt": _updatedAt
       }`,
   )
