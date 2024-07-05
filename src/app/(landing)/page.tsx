@@ -20,8 +20,8 @@ import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
 import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
 import logoUnseal from '@/images/clients/unseal/logo-light.svg'
 import imageLaptop from '@/images/laptop.jpg'
-import { Project, getProjects } from '@/lib/sanity/project.query'
-import { urlForImage } from '../../../sanity/lib/image'
+import { ProjectType, getProjects } from '@/lib/sanity/project.query'
+import { urlForImage } from '@/sanity/lib/image'
 
 const clients = [
   ['Phobia', logoPhobiaLight],
@@ -36,13 +36,13 @@ const clients = [
 
 function Clients() {
   return (
-    <div className="bg-brand-500 mt-24 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+    <div className="mt-24 bg-brand-500 py-20 sm:mt-32 sm:py-32 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
             We’ve worked with hundreds of amazing people
           </h2>
-          <div className="bg-brand-400 h-px flex-auto" />
+          <div className="h-px flex-auto bg-brand-400" />
         </FadeIn>
         <FadeInStagger faster>
           <ul role="list" className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
@@ -60,23 +60,20 @@ function Clients() {
   )
 }
 
-function Projects({ projects }: { projects: Project[] }) {
+function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <>
-      <SectionIntro
-        title="Harnessingtechnology for a brighter future"
-        className="mt-24 sm:mt-32 lg:mt-40"
-      >
+      <SectionIntro title="Diverse Projects, Proven Success" className="mt-24 sm:mt-32 lg:mt-40">
         <p>
-          We believe technology is the answer to the world’s greatest challenges. It’s also the
-          cause, so we find ourselves in bit of a catch 22 situation.
+          Explore some of the groundbreaking projects we've developed and see how Etherwave Labs has
+          helped businesses achieve their goals in the blochchain space.
         </p>
       </SectionIntro>
       <Container className="mt-16">
         <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {projects.map((project) => (
             <FadeIn key={project.slug} className="flex">
-              <article className="hover:bg-brand-100/50 relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out sm:p-8">
+              <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out hover:bg-brand-100/50 sm:p-8">
                 <h3>
                   <Link href={'projects/' + project.slug}>
                     <span className="absolute inset-0 rounded-3xl" />
@@ -90,14 +87,20 @@ function Projects({ projects }: { projects: Project[] }) {
                     />
                   </Link>
                 </h3>
-                <p className="mt-6 flex gap-x-2 text-sm text-neutral-950">
+                <p className="mt-6 flex items-center gap-x-2 text-sm text-neutral-950">
                   <time dateTime={moment(project.endAt).format('YYYY')} className="font-semibold">
                     {moment(project.endAt).format('YYYY')}
                   </time>
                   <span className="text-neutral-300" aria-hidden="true">
                     /
                   </span>
-                  <span>Case study</span>
+                  {project.tags.map((tag, index) => {
+                    return (
+                      <span key={`tag-${index}`} className="text-lg font-medium text-brand-400">
+                        #{project.tags}
+                      </span>
+                    )
+                  })}
                 </p>
                 <p className="mt-6 font-display text-2xl font-semibold text-neutral-950">
                   {project.title}
@@ -116,13 +119,14 @@ function Services() {
   return (
     <>
       <SectionIntro
-        eyebrow="Services"
-        title="We help you identify, explore and respond to new opportunities."
+        // eyebrow="Services"
+        title="Our Services"
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          As long as those opportunities involve giving us money to re-purpose old projects — we can
-          come up with an endless number of those.
+          We are committed to driving innovation and excellence in the blockchain space. Our mission
+          is to provide top-tier development services that empower businesses to harness the full
+          potential of decentralized technologies.
         </p>
       </SectionIntro>
       <Container className="mt-16">
@@ -137,21 +141,25 @@ function Services() {
             </FadeIn>
           </div>
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="Web development">
-              We specialise in crafting beautiful, high quality marketing pages. The rest of the
-              website will be a shell that uses lorem ipsum everywhere.
+            <ListItem title="dApp Development">
+              Transform your ideas into reality with modern front-end applications using Next.js and
+              TailwindCSS, seamlessly integrated with web3 features. Our dApps offer a user-friendly
+              interface and robust performance for an engaging user experience.
             </ListItem>
-            <ListItem title="Application development">
-              We have a team of skilled developers who are experts in the latest app frameworks,
-              like Angular 1 and Google Web Toolkit.
+            <ListItem title="Smart Contract Development">
+              We craft highly secure smart contracts using Hardhat and Foundry, deployable on any
+              EVM-compatible blockchain. Trust Etherwave Labs to build and audit your smart
+              contracts, ensuring maximum security and reliability.
             </ListItem>
-            <ListItem title="E-commerce">
-              We are at the forefront of modern e-commerce development. Which mainly means adding
-              your logo to the Shopify store template we’ve used for the past six years.
+            <ListItem title="Backend Development">
+              Our backend development services cover databases, scripts, bots, and CI/CD pipelines.
+              We create scalable and resilient infrastructures tailored to your needs, ensuring
+              smooth and efficient operations.
             </ListItem>
-            <ListItem title="Custom content management">
-              At Studio we understand the importance of having a robust and customised CMS. That’s
-              why we run all of our client projects out of a single, enormous Joomla instance.
+            <ListItem title="Web3/Blockchain Consulting">
+              Navigate the complexities of web3 and blockchain technology with our expert consulting
+              services. We provide insightful guidance and practical solutions to help you achieve
+              your goals and maximize your potential in the decentralized world.
             </ListItem>
           </List>
         </div>
@@ -161,22 +169,24 @@ function Services() {
 }
 
 export const metadata: Metadata = {
-  description: 'We are a development studio working at the intersection of design and technology.',
+  description:
+    'We are an blockchain development agency focused on helping clients transitionning to web3 smoothly.',
 }
 
 export default async function Home() {
-  const projects = (await getProjects()) as Project[]
+  const projects = (await getProjects()).slice(0, 3) as ProjectType[]
 
   return (
     <>
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Award-winning development studio based in Denmark.
+            Your Gateway to Next-Generation Blockchain Solutions
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
-            We are a development studio working at the intersection of design and technology. It’s a
-            really busy intersection though — a lot of our staff have been involved in hit and runs.
+            At Etherwave Labs, we build cutting-edge dApps, secure smart contracts, and robust
+            backend solutions. Harness the power of blockchain with our expert development and
+            consulting services.
           </p>
         </FadeIn>
       </Container>

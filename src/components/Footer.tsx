@@ -2,24 +2,16 @@ import Link from 'next/link'
 
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { Logo } from '@/components/Logo'
 import { socialMediaProfiles } from '@/components/SocialMedia'
+import Logo from '@/components/Logo'
 
 const navigation = [
   {
     title: 'Work',
     links: [
-      { title: 'FamilyFund', href: '/work/family-fund' },
-      { title: 'Unseal', href: '/work/unseal' },
-      { title: 'Phobia', href: '/work/phobia' },
-      {
-        title: (
-          <>
-            See all <span aria-hidden="true">&rarr;</span>
-          </>
-        ),
-        href: '/work',
-      },
+      { title: 'Ethereum Credit Guild', href: 'projects/ethereum-credit-guild' },
+      { title: 'The Smurfs Society', href: '/projects/the-smurfs-society' },
+      { title: 'Paralleelium', href: '/projects/paralleelium' },
     ],
   },
   {
@@ -96,7 +88,7 @@ function NewsletterForm() {
           <button
             type="submit"
             aria-label="Submit"
-            className="bg-brand-500 flex aspect-square h-full items-center justify-center rounded-xl text-white transition hover:bg-neutral-800"
+            className="flex aspect-square h-full items-center justify-center rounded-xl bg-brand-500 text-white transition hover:bg-neutral-800"
           >
             <ArrowIcon className="w-4" />
           </button>
@@ -118,7 +110,7 @@ export function Footer() {
         </div>
         <div className="mb-20 mt-24 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
           <Link href="/" aria-label="Home">
-            <Logo className="h-8" fillOnHover />
+            <Logo />
           </Link>
           <p className="text-sm text-neutral-700">©Etherwave Labs. {new Date().getFullYear()}</p>
         </div>

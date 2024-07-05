@@ -7,7 +7,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 export const metadata: Metadata = {
   title: {
     template: '%s - Studio',
-    default: 'Studio - Award winning developer studio based in Denmark',
+    default: 'Etherwave Labs - Blockchain Development Agency',
   },
 }
 

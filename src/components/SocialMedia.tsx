@@ -50,10 +50,8 @@ function DribbbleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 export const socialMediaProfiles = [
-  { title: 'Facebook', href: 'https://facebook.com', icon: FacebookIcon },
-  { title: 'Instagram', href: 'https://instagram.com', icon: InstagramIcon },
-  { title: 'GitHub', href: 'https://github.com', icon: GitHubIcon },
-  { title: 'Dribbble', href: 'https://dribbble.com', icon: DribbbleIcon },
+  { title: 'LinkedIn', href: process.env.NEXT_PUBLIC_LINKEDIN_URL, icon: FacebookIcon },
+  { title: 'GitHub', href: process.env.NEXT_PUBLIC_GITHUB_URL, icon: GitHubIcon },
 ]
 
 export function SocialMedia({
@@ -66,11 +64,7 @@ export function SocialMedia({
   return (
     <ul
       role="list"
-      className={clsx(
-        'flex gap-x-10',
-        invert ? 'text-white' : 'text-neutral-950',
-        className,
-      )}
+      className={clsx('flex gap-x-10', invert ? 'text-white' : 'text-neutral-950', className)}
     >
       {socialMediaProfiles.map((socialMediaProfile) => (
         <li key={socialMediaProfile.title}>
