@@ -11,14 +11,14 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { PageIntro } from '@/components/PageIntro'
 import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-dark.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-dark.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-dark.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-dark.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-dark.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-dark.svg'
-import logoPhobia from '@/images/clients/phobia/logo-dark.svg'
-import logoUnseal from '@/images/clients/unseal/logo-dark.svg'
+import logoBrightPath from '@/assets/images/clients/bright-path/logo-dark.svg'
+import logoFamilyFund from '@/assets/images/clients/family-fund/logo-dark.svg'
+import logoGreenLife from '@/assets/images/clients/green-life/logo-dark.svg'
+import logoHomeWork from '@/assets/images/clients/home-work/logo-dark.svg'
+import logoMailSmirk from '@/assets/images/clients/mail-smirk/logo-dark.svg'
+import logoNorthAdventures from '@/assets/images/clients/north-adventures/logo-dark.svg'
+import logoPhobia from '@/assets/images/clients/phobia/logo-dark.svg'
+import logoUnseal from '@/assets/images/clients/unseal/logo-dark.svg'
 import { ProjectType, getProjects } from '@/lib/sanity/project.query'
 import { urlForImage } from '@/sanity/lib/image'
 
@@ -154,7 +154,7 @@ export default async function Projects() {
         remarkably similar in record time.
       </Testimonial>
 
-      <Clients />
+      {/* <Clients /> */}
 
       <ContactSection />
     </>

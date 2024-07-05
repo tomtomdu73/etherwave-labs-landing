@@ -10,28 +10,21 @@ import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-light.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-light.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-light.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-light.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-light.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.svg'
-import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
-import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
-import logoUnseal from '@/images/clients/unseal/logo-light.svg'
-import imageLaptop from '@/images/laptop.jpg'
+import nextjsLogo from '@/assets/stacks/nextjs.png'
+import nodejsLogo from '@/assets/stacks/nodejs.png'
+import reactLogo from '@/assets/stacks/reactjs.png'
+import tailwindLogo from '@/assets/stacks/tailwind.png'
+import imageLaptop from '@/assets/images/laptop.jpg'
+import logoPhobiaDark from '@/assets/images/clients/phobia/logo-dark.svg'
+
 import { ProjectType, getProjects } from '@/lib/sanity/project.query'
 import { urlForImage } from '@/sanity/lib/image'
 
-const clients = [
-  ['Phobia', logoPhobiaLight],
-  ['Family Fund', logoFamilyFund],
-  ['Unseal', logoUnseal],
-  ['Mail Smirk', logoMailSmirk],
-  ['Home Work', logoHomeWork],
-  ['Green Life', logoGreenLife],
-  ['Bright Path', logoBrightPath],
-  ['North Adventures', logoNorthAdventures],
+const stacks = [
+  ['Next.js', nextjsLogo],
+  ['Node.js', nodejsLogo],
+  ['React.js', reactLogo],
+  ['Tailwindcss', tailwindLogo],
 ]
 
 function Clients() {
@@ -40,16 +33,16 @@ function Clients() {
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            We’ve worked with hundreds of amazing people
+            Some amazing technologies we love working with
           </h2>
           <div className="h-px flex-auto bg-brand-400" />
         </FadeIn>
         <FadeInStagger faster>
           <ul role="list" className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
-            {clients.map(([client, logo]) => (
+            {stacks.map(([client, logo]) => (
               <li key={client}>
                 <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
+                  <Image className="w-36" src={logo} alt={client} unoptimized />
                 </FadeIn>
               </li>
             ))}
