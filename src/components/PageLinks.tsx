@@ -38,7 +38,7 @@ function PageLink({ page }: { page: Page }) {
           className="2-48 mt-6 h-48 object-cover"
         />
         <Link
-          href={page.slug}
+          href={'blog/' + page.slug}
           className="mt-6 flex gap-x-3 text-base font-semibold text-neutral-950 transition hover:text-neutral-700"
           aria-label={`Read more: ${page.title}`}
         >
