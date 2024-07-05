@@ -10,10 +10,19 @@ import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import { Testimonial } from '@/components/Testimonial'
-import nextjsLogo from '@/assets/stacks/nextjs.png'
-import nodejsLogo from '@/assets/stacks/nodejs.png'
-import reactLogo from '@/assets/stacks/reactjs.png'
-import tailwindLogo from '@/assets/stacks/tailwind.png'
+import nextjsLogo from '@/assets/stacks/nextjs.svg'
+import nodejsLogo from '@/assets/stacks/nodejs.svg'
+import ethereumLogo from '@/assets/stacks/ethereum.png'
+import tailwindLogo from '@/assets/stacks/tailwindcss.svg'
+import framerLogo from '@/assets/stacks/framer.svg'
+import wagmiLogo from '@/assets/stacks/wagmi.svg'
+import thegraphLogo from '@/assets/stacks/thegraph.svg'
+import biconomyLogo from '@/assets/stacks/biconomy.png'
+import alchemyLogo from '@/assets/stacks/alchemy.svg'
+import lensLogo from '@/assets/stacks/lens.svg'
+import stripeLogo from '@/assets/stacks/stripe.svg'
+import openzeppelinLogo from '@/assets/stacks/openzeppelin.svg'
+
 import imageLaptop from '@/assets/images/laptop.jpg'
 import logoPhobiaDark from '@/assets/images/clients/phobia/logo-dark.svg'
 
@@ -22,27 +31,38 @@ import { urlForImage } from '@/sanity/lib/image'
 
 const stacks = [
   ['Next.js', nextjsLogo],
-  ['Node.js', nodejsLogo],
-  ['React.js', reactLogo],
+  ['Wagmi', wagmiLogo],
   ['Tailwindcss', tailwindLogo],
+  ['Framer Motion', framerLogo],
+  ['Node.js', nodejsLogo],
+  ['The Graph', thegraphLogo],
+  ['Biconomy', biconomyLogo],
+  ['Lens', lensLogo],
+  ['Stripe', stripeLogo],
+  ['Ethereum', ethereumLogo],
+  ['Alchemy', alchemyLogo],
+  ['Openzeppelin', openzeppelinLogo],
 ]
 
-function Clients() {
+function Stacks() {
   return (
-    <div className="mt-24 bg-brand-500 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+    <div className="mt-24 bg-white py-20 sm:mt-32 sm:py-24 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
-          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
+          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-neutral-950 sm:text-left">
             Some amazing technologies we love working with
           </h2>
-          <div className="h-px flex-auto bg-brand-400" />
+          <div className="h-px flex-auto bg-neutral-400" />
         </FadeIn>
         <FadeInStagger faster>
-          <ul role="list" className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
+          <ul
+            role="list"
+            className="mt-10 grid grid-cols-2 items-center gap-x-8 gap-y-10 lg:grid-cols-4"
+          >
             {stacks.map(([client, logo]) => (
               <li key={client}>
                 <FadeIn>
-                  <Image className="w-36" src={logo} alt={client} unoptimized />
+                  <Image className="w-36" src={logo} alt={client} width={250} />
                 </FadeIn>
               </li>
             ))}
@@ -184,7 +204,7 @@ export default async function Home() {
         </FadeIn>
       </Container>
 
-      <Clients />
+      <Stacks />
 
       <Projects projects={projects} />
 
