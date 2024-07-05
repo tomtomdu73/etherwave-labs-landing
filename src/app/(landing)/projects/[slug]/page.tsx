@@ -7,7 +7,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { GrayscaleTransitionImage } from '@/components/GrayscaleTransitionImage'
 import { PageIntro } from '@/components/PageIntro'
 import { ProjectType, getProject } from '@/lib/sanity/project.query'
-import { urlForImage } from '../../../../../sanity/lib/image'
+import { urlForImage } from '@/sanity/lib/image'
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },

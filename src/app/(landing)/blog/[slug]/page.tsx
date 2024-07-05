@@ -6,8 +6,8 @@ import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Post, getPost } from '@/lib/sanity/post.query'
+import { urlForImage } from '@/sanity/lib/image'
 import { ptComponents } from './helper'
-import { urlForImage } from '../../../../../sanity/lib/image'
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },
@@ -44,6 +44,7 @@ export async function generateMetadata(
     },
   }
 }
+
 export default async function Article({ params }: { params: { slug: string } }) {
   const article = (await getPost(params.slug)) as Post
 

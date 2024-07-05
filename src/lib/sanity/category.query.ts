@@ -1,5 +1,5 @@
 import { groq } from 'next-sanity'
-import { client } from '../../../sanity/lib/client'
+import { client } from '@/sanity/lib/client'
 
 export interface Category {
   id: string

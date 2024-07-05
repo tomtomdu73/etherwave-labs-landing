@@ -7,7 +7,7 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
 import { SectionIntro } from '@/components/SectionIntro'
-import { urlForImage } from '../../sanity/lib/image'
+import { urlForImage } from '@/sanity/lib/image'
 
 function ArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (

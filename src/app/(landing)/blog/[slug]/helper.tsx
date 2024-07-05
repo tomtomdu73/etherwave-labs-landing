@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { PortableTextComponents } from '@portabletext/react'
 
-import { urlForImage } from '../../../../../sanity/lib/image'
+import { urlForImage } from '@/sanity/lib/image'
 import CodeHighlighter from '@/components/CodeHighlighter'
 import { ImageZoom } from '@/components/ImageZoom'
 import YoutubeVideo from '@/components/YoutubeVideo'
@@ -33,11 +33,7 @@ export const ptComponents: PortableTextComponents = {
     },
     code: ({ value }: { value: any }) => {
       return (
-        <CodeHighlighter
-          code={value.code}
-          language={value.language}
-          filename={value.filename}
-        />
+        <CodeHighlighter code={value.code} language={value.language} filename={value.filename} />
       )
     },
     youtubeVideo: ({ value }: { value: any }) => {
@@ -75,9 +71,7 @@ export const ptComponents: PortableTextComponents = {
   marks: {
     strong: ({ children }) => <span className="font-semibold">{children}</span>,
     link: ({ value, children }) => {
-      const target = (value?.href || '').startsWith('http')
-        ? '_blank'
-        : undefined
+      const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
       return (
         <a
           className="transition-color text-lime-600 duration-150 ease-in-out hover:text-lime-500 dark:text-lime-300 dark:hover:text-lime-200"

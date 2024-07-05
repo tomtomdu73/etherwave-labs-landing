@@ -1,6 +1,7 @@
 import { groq } from 'next-sanity'
-import { client } from '../../../sanity/lib/client'
 import { Image, PortableTextBlock } from 'sanity'
+
+import { client } from '@/sanity/lib/client'
 
 export interface Post {
   id: string

@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import moment from 'moment'
 
 import { Blockquote } from '@/components/Blockquote'
 import { Border } from '@/components/Border'
@@ -19,8 +20,7 @@ import logoNorthAdventures from '@/images/clients/north-adventures/logo-dark.svg
 import logoPhobia from '@/images/clients/phobia/logo-dark.svg'
 import logoUnseal from '@/images/clients/unseal/logo-dark.svg'
 import { ProjectType, getProjects } from '@/lib/sanity/project.query'
-import { urlForImage } from '../../../../sanity/lib/image'
-import moment from 'moment'
+import { urlForImage } from '@/sanity/lib/image'
 
 function ProjectsList({ projects }: { projects: ProjectType[] }) {
   return (

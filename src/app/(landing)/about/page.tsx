@@ -12,7 +12,7 @@ import { SectionIntro } from '@/components/SectionIntro'
 import { StatList, StatListItem } from '@/components/StatList'
 import { Post, getPosts } from '@/lib/sanity/post.query'
 import { AuthorType, getAuthors } from '@/lib/sanity/author.query'
-import { urlForImage } from '../../../../sanity/lib/image'
+import { urlForImage } from '@/sanity/lib/image'
 
 export const metadata: Metadata = {
   title: 'About - Etherwabe Labs',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 function Culture() {
   return (
-    <div className="bg-brand-500 mt-24 rounded-4xl py-24 sm:mt-32 lg:mt-40 lg:py-32">
+    <div className="mt-24 rounded-4xl bg-brand-500 py-24 sm:mt-32 lg:mt-40 lg:py-32">
       <SectionIntro
         eyebrow="Our culture"
         title="Balance your passion with your passion for life."

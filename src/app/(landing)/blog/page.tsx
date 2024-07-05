@@ -10,7 +10,7 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { PageIntro } from '@/components/PageIntro'
 import { Post, getPosts } from '@/lib/sanity/post.query'
-import { urlForImage } from '../../../../sanity/lib/image'
+import { urlForImage } from '@/sanity/lib/image'
 
 export const metadata: Metadata = {
   title: 'Blog',

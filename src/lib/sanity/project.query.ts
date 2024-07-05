@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
-import { Image, PortableTextBlock } from 'sanity'
+import { Image } from 'sanity'
 
-import { client } from '../../../sanity/lib/client'
+import { client } from '@/sanity/lib/client'
 
 export interface ProjectType {
   id: string
