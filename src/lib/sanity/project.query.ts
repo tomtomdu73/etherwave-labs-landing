@@ -7,13 +7,15 @@ export interface ProjectType {
   id: string
   title: string
   description: string
+  services: string
   image: Image
   logo: Image
   projectUrl: string
   stacks: string[]
+  tags: string[]
   slug: string
   startAt: string
-  endAt: string
+  endAt?: string
 }
 
 export interface ProjectSlugType {
@@ -28,10 +30,12 @@ export async function getProject(slug: string): Promise<ProjectType> {
         title,
         "slug": slug.current,
         description,
+        services,
         image,
         logo,
         projectUrl,
         "stacks": stacks[]->title,
+        "tags": tags[]->title,
         startAt,
         endAt,
       }`,
@@ -45,10 +49,12 @@ export async function getProjects(): Promise<ProjectType[]> {
         title,
         "slug": slug.current,
         description,
+        services,
         image,
         logo,
         projectUrl,
         "stacks": stacks[]->title,
+        "tags": tags[]->title,
         startAt,
         endAt,
       }`,

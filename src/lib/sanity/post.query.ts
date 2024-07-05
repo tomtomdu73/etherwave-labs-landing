@@ -9,6 +9,7 @@ export interface Post {
   description: string
   keywords: string
   image: Image
+  tags: string[]
   author: {
     name: string
     image: Image
@@ -17,7 +18,6 @@ export interface Post {
     githubUrl?: string
   }
   body: PortableTextBlock[]
-  categories: string[]
   slug: string
   publishedAt: string
 }
@@ -37,7 +37,7 @@ export async function getPost(slug: string): Promise<Post> {
         keywords,
         "image": mainImage,
         author->{name, image, websiteUrl, linkedinUrl, githubUrl},
-        "categories": categories[]->,
+        "tags": tags[]->title,
         body[]{
             ...,
             markDefs[]{
@@ -61,7 +61,7 @@ export async function getPosts(): Promise<Post[]> {
         description,
         "image": mainImage,
         author->{name, image, websiteUrl, linkedinUrl, githubUrl},
-        "tags": tags[]->,
+        "tags": tags[]->title,
         body[]{
             ...,
             markDefs[]{
@@ -79,7 +79,7 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostsbyCategory(category: string): Promise<Post[]> {
   return client.fetch(
     groq`
-        *[_type == "post" && "${category}" in categories[]->title && publishedAt < now()] | order(publishedAt desc){
+        *[_type == "post" && "${category}" in tags[]->title && publishedAt < now()] | order(publishedAt desc){
             "id": _id,
             title,
             "slug": slug.current,
@@ -87,7 +87,7 @@ export async function getPostsbyCategory(category: string): Promise<Post[]> {
             keywords,
             "image": mainImage,
             author->{name, image},
-            "categories": categories[]->,
+            "tags": tags[]->title,
             publishedAt
     }`,
   )

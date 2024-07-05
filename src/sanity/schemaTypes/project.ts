@@ -23,9 +23,29 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      title: 'Description',
+      title: 'Project Description',
       type: 'string',
       validation: (Rule) => Rule.required().max(300),
+    }),
+    defineField({
+      name: 'services',
+      title: 'Services',
+      type: 'string',
+      validation: (Rule) => Rule.required().max(300),
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'tag' } }],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'stacks',
+      title: 'Stacks',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'stack' } }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'startAt',
@@ -37,7 +57,6 @@ export default defineType({
       name: 'endAt',
       title: 'End Date',
       type: 'datetime',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'projectUrl',
@@ -75,13 +94,6 @@ export default defineType({
           title: 'project logo',
         },
       ],
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'stacks',
-      title: 'Stacks',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'stack' } }],
       validation: (Rule) => Rule.required(),
     }),
   ],
