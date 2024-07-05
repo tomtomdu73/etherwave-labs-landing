@@ -25,8 +25,10 @@ export default async function Blog() {
     <>
       <PageIntro eyebrow="Blog" title="The latest articles and news">
         <p>
-          Stay up-to-date with the latest industry news as our marketing teams finds new ways to
-          re-purpose old CSS tricks articles.
+          Welcome to the Etherwave Labs Blog, your source for the latest news, insights, and
+          tutorials in the blockchain industry. Whether you're a seasoned professional or a curious
+          newcomer, find valuable information to expand your understanding and capabilities in
+          blockchain technology.
         </p>
       </PageIntro>
 
