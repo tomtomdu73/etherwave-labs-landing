@@ -7,7 +7,7 @@ import Logo from '@/components/Logo'
 
 const navigation = [
   {
-    title: 'Work',
+    title: 'Portfolio',
     links: [
       { title: 'Ethereum Credit Guild', href: 'projects/ethereum-credit-guild' },
       { title: 'The Smurfs Society', href: '/projects/the-smurfs-society' },
@@ -17,10 +17,9 @@ const navigation = [
   {
     title: 'Company',
     links: [
-      { title: 'About', href: '/about' },
-      { title: 'Process', href: '/process' },
       { title: 'Blog', href: '/blog' },
-      { title: 'Contact us', href: '/contact' },
+      { title: 'All Projects', href: '/projects' },
+      // { title: 'Contact us', href: '/contact' },
     ],
   },
   {
