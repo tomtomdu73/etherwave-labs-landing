@@ -19,9 +19,9 @@ export function ListItem({ children, title }: { children: React.ReactNode; title
       <FadeIn>
         <Border className="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden">
           {title && (
-            <strong className="text-wrap text-xl font-semibold uppercase text-brand-500">{`${title} `}</strong>
+            <strong className="text-wrap font-display text-xl font-semibold uppercase text-brand-500">{`${title} `}</strong>
           )}
-          <p className="text-lg">{children}</p>
+          <p className="mt-2 text-lg">{children}</p>
         </Border>
       </FadeIn>
     </li>

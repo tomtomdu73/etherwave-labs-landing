@@ -14,11 +14,12 @@ export default function Team({ members }: { members: AuthorType[] }) {
         title="Meet our Team"
         className="mt-24 sm:mt-32 lg:mt-40"
       >
-        {/* <p>
-          We are committed to driving innovation and excellence in the blockchain space. Our mission
-          is to provide top-tier development services that empower businesses to harness the full
-          potential of decentralized technologies.
-        </p> */}
+        <p>
+          Our team at Etherwave Labs brings together over 10 years of experience in the software
+          development field, having worked with international clients and on diverse projects across
+          the globe. With a cumulative experience of over 5 years in blockchain technology, we have
+          the knowledge and skills to deliver innovative and secure solutions.
+        </p>
       </SectionIntro>
       <Container className="mt-24">
         <div className="space-y-24">
