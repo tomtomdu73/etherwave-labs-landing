@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 import { Image, PortableTextBlock } from 'sanity'
 
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/client'
 
 export interface Post {
   id: string
@@ -28,8 +28,8 @@ export interface PostSlugType {
 }
 
 export async function getPost(slug: string): Promise<Post> {
-  return client.fetch(
-    groq`*[_type == "post" && slug.current == "${slug}"][0]{
+  return sanityFetch<Post>({
+    query: groq`*[_type == "post" && slug.current == "${slug}"][0]{
         "id": _id,
         title,
         "slug": slug.current,
@@ -49,12 +49,14 @@ export async function getPost(slug: string): Promise<Post> {
         },
         publishedAt
       }`,
-  )
+    tags: ['post'],
+    qParams: { slug },
+  })
 }
 
 export async function getPosts(): Promise<Post[]> {
-  return client.fetch(
-    groq`*[_type == "post" && publishedAt < now()] | order(publishedAt desc){
+  return sanityFetch<Post[]>({
+    query: groq`*[_type == "post" && publishedAt < now()] | order(publishedAt desc){
         "id": _id,
         title,
         "slug": slug.current,
@@ -73,12 +75,13 @@ export async function getPosts(): Promise<Post[]> {
         },
         publishedAt
       }`,
-  )
+    tags: ['post'],
+  })
 }
 
 export async function getPostsbyCategory(category: string): Promise<Post[]> {
-  return client.fetch(
-    groq`
+  return sanityFetch<Post[]>({
+    query: groq`
         *[_type == "post" && "${category}" in tags[]->title && publishedAt < now()] | order(publishedAt desc){
             "id": _id,
             title,
@@ -90,12 +93,13 @@ export async function getPostsbyCategory(category: string): Promise<Post[]> {
             "tags": tags[]->title,
             publishedAt
     }`,
-  )
+    tags: ['post'],
+  })
 }
 
 export async function getAllPostsSlug(): Promise<PostSlugType[]> {
-  return client.fetch(
-    groq`
+  return sanityFetch<PostSlugType[]>({
+    query: groq`
           *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
               "slug": slug.current,
               title,
@@ -103,5 +107,6 @@ export async function getAllPostsSlug(): Promise<PostSlugType[]> {
               "image": mainImage,
               "updatedAt": _updatedAt
       }`,
-  )
+    tags: ['post'],
+  })
 }

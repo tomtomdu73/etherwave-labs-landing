@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 import { Image } from 'sanity'
 
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/client'
 
 export interface ProjectType {
   id: string
@@ -24,8 +24,8 @@ export interface ProjectSlugType {
 }
 
 export async function getProject(slug: string): Promise<ProjectType> {
-  return client.fetch(
-    groq`*[_type == "project" && slug.current == "${slug}"][0]{
+  return sanityFetch<ProjectType>({
+    query: groq`*[_type == "project" && slug.current == "${slug}"][0]{
         "id": _id,
         title,
         "slug": slug.current,
@@ -39,12 +39,14 @@ export async function getProject(slug: string): Promise<ProjectType> {
         startAt,
         endAt,
       }`,
-  )
+    tags: ['post'],
+    qParams: { slug },
+  })
 }
 
 export async function getProjects(): Promise<ProjectType[]> {
-  return client.fetch(
-    groq`*[_type == "project"] | order(endDate desc){
+  return sanityFetch<ProjectType[]>({
+    query: groq`*[_type == "project"] | order(endDate desc){
         "id": _id,
         title,
         "slug": slug.current,
@@ -58,15 +60,17 @@ export async function getProjects(): Promise<ProjectType[]> {
         startAt,
         endAt,
       }`,
-  )
+    tags: ['post'],
+  })
 }
 
 export async function getAllProjectsSlug(): Promise<ProjectSlugType[]> {
-  return client.fetch(
-    groq`
+  return sanityFetch<ProjectSlugType[]>({
+    query: groq`
           *[_type == "project"] {
               "slug": slug.current,
               "updatedAt": _updatedAt
       }`,
-  )
+    tags: ['post'],
+  })
 }

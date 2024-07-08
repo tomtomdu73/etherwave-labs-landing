@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 import { Image } from 'sanity'
 
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/client'
 
 export interface AuthorType {
   id: string
@@ -13,8 +13,8 @@ export interface AuthorType {
 }
 
 export async function getAuthors(): Promise<AuthorType[]> {
-  return client.fetch(
-    groq`*[_type == "author"] {
+  return sanityFetch<AuthorType[]>({
+    query: groq`*[_type == "author"] {
         "id": _id,
         name,
         image,
@@ -22,5 +22,6 @@ export async function getAuthors(): Promise<AuthorType[]> {
         "linkedin": linkedinUrl,
         "github": githubUrl,
       }`,
-  )
+    tags: ['author'],
+  })
 }
