@@ -9,74 +9,20 @@ import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
-import { Testimonial } from '@/components/Testimonial'
-import nextjsLogo from '@/assets/stacks/nextjs.svg'
-import nodejsLogo from '@/assets/stacks/nodejs.svg'
-import ethereumLogo from '@/assets/stacks/ethereum.png'
-import tailwindLogo from '@/assets/stacks/tailwindcss.svg'
-import framerLogo from '@/assets/stacks/framer.svg'
-import wagmiLogo from '@/assets/stacks/wagmi.svg'
-import thegraphLogo from '@/assets/stacks/thegraph.svg'
-import biconomyLogo from '@/assets/stacks/biconomy.png'
-import alchemyLogo from '@/assets/stacks/alchemy.svg'
-import lensLogo from '@/assets/stacks/lens.svg'
-import stripeLogo from '@/assets/stacks/stripe.svg'
-import openzeppelinLogo from '@/assets/stacks/openzeppelin.svg'
+import Stacks from '@/components/Stacks'
+import Team from '@/components/Team'
 
 import imageLaptop from '@/assets/images/laptop.jpg'
-import logoPhobiaDark from '@/assets/images/clients/phobia/logo-dark.svg'
 
 import { ProjectType, getProjects } from '@/lib/sanity/project.query'
+import { AuthorType, getAuthors } from '@/lib/sanity/author.query'
 import { urlForImage } from '@/sanity/lib/image'
-
-const stacks = [
-  ['Next.js', nextjsLogo],
-  ['Wagmi', wagmiLogo],
-  ['Tailwindcss', tailwindLogo],
-  ['Framer Motion', framerLogo],
-  ['Node.js', nodejsLogo],
-  ['The Graph', thegraphLogo],
-  ['Biconomy', biconomyLogo],
-  ['Lens', lensLogo],
-  ['Stripe', stripeLogo],
-  ['Ethereum', ethereumLogo],
-  ['Alchemy', alchemyLogo],
-  ['Openzeppelin', openzeppelinLogo],
-]
-
-function Stacks() {
-  return (
-    <div className="mt-24 bg-white py-20 sm:mt-32 sm:py-24 lg:mt-56">
-      <Container>
-        <FadeIn className="flex items-center gap-x-8">
-          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-neutral-950 sm:text-left">
-            Some amazing technologies we love working with
-          </h2>
-          <div className="h-px flex-auto bg-neutral-400" />
-        </FadeIn>
-        <FadeInStagger faster>
-          <ul
-            role="list"
-            className="mt-10 grid grid-cols-2 items-center gap-x-8 gap-y-10 lg:grid-cols-4"
-          >
-            {stacks.map(([client, logo]) => (
-              <li key={client}>
-                <FadeIn>
-                  <Image className="w-36" src={logo} alt={client} width={250} />
-                </FadeIn>
-              </li>
-            ))}
-          </ul>
-        </FadeInStagger>
-      </Container>
-    </div>
-  )
-}
+import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 
 function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <>
-      <SectionIntro title="Diverse Projects, Proven Success" className="mt-24 sm:mt-32 lg:mt-40">
+      <SectionIntro title="Diverse Projects, Proven Success" className="mt-24 sm:mt-32 lg:mt-80">
         <p>
           Explore some of the groundbreaking projects we've developed and see how Etherwave Labs has
           helped businesses achieve their goals in the blochchain space.
@@ -101,9 +47,15 @@ function Projects({ projects }: { projects: ProjectType[] }) {
                   </Link>
                 </h3>
                 <p className="mt-6 flex items-center gap-x-2 text-sm text-neutral-950">
-                  <time dateTime={moment(project.endAt).format('YYYY')} className="font-semibold">
-                    {moment(project.endAt).format('YYYY')}
-                  </time>
+                  {project.endAt ? (
+                    <time dateTime={moment(project.endAt).format('YYYY')}>
+                      {moment(project.endAt).format('YYYY')}
+                    </time>
+                  ) : (
+                    <time dateTime={moment(project.startAt).format('YYYY')}>
+                      {moment(project.startAt).format('YYYY')}
+                    </time>
+                  )}
                   <span className="text-neutral-300" aria-hidden="true">
                     /
                   </span>
@@ -122,6 +74,15 @@ function Projects({ projects }: { projects: ProjectType[] }) {
               </article>
             </FadeIn>
           ))}
+          <FadeIn key="viewAll" className="lg:col-span-3">
+            <Link
+              href="/projects"
+              className="group flex w-full items-center justify-end gap-2 font-display font-medium duration-200 ease-in-out hover:text-brand-400"
+            >
+              View all projects
+              <ArrowLongRightIcon className="h-6 w-6 transition-all duration-200 ease-in-out group-hover:translate-x-2" />
+            </Link>
+          </FadeIn>
         </FadeInStagger>
       </Container>
     </>
@@ -154,22 +115,22 @@ function Services() {
             </FadeIn>
           </div>
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="dApp Development">
+            <ListItem title="#1 dApp Development">
               Transform your ideas into reality with modern front-end applications using Next.js and
               TailwindCSS, seamlessly integrated with web3 features. Our dApps offer a user-friendly
               interface and robust performance for an engaging user experience.
             </ListItem>
-            <ListItem title="Smart Contract Development">
+            <ListItem title="#2 Smart Contract Development">
               We craft highly secure smart contracts using Hardhat and Foundry, deployable on any
               EVM-compatible blockchain. Trust Etherwave Labs to build and audit your smart
               contracts, ensuring maximum security and reliability.
             </ListItem>
-            <ListItem title="Backend Development">
+            <ListItem title="#3 Backend Development">
               Our backend development services cover databases, scripts, bots, and CI/CD pipelines.
               We create scalable and resilient infrastructures tailored to your needs, ensuring
               smooth and efficient operations.
             </ListItem>
-            <ListItem title="Web3/Blockchain Consulting">
+            <ListItem title="#4 Web3/Blockchain Consulting">
               Navigate the complexities of web3 and blockchain technology with our expert consulting
               services. We provide insightful guidance and practical solutions to help you achieve
               your goals and maximize your potential in the decentralized world.
@@ -188,6 +149,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const projects = (await getProjects()).slice(0, 3) as ProjectType[]
+  const authors = (await getAuthors()) as AuthorType[]
 
   return (
     <>
@@ -198,25 +160,19 @@ export default async function Home() {
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
             At Etherwave Labs, we build cutting-edge dApps, secure smart contracts, and robust
-            backend solutions. Harness the power of blockchain with our expert development and
-            consulting services.
+            backend solutions. Harness the power of blockchain and web3 with our expert development
+            and consulting services.
           </p>
         </FadeIn>
       </Container>
 
-      <Stacks />
-
       <Projects projects={projects} />
 
-      <Testimonial
-        className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
-      >
-        The team at Studio went above and beyond with our onboarding, even finding a way to access
-        the user’s microphone without triggering one of those annoying permission dialogs.
-      </Testimonial>
+      <Stacks />
 
       <Services />
+
+      <Team members={authors} />
 
       <ContactSection />
     </>
