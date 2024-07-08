@@ -30,50 +30,48 @@ function Projects({ projects }: { projects: ProjectType[] }) {
       </SectionIntro>
       <Container className="mt-16">
         <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {projects.map((project) => (
-            <FadeIn key={project.slug} className="flex">
-              <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out hover:bg-brand-100/50 sm:p-8">
-                <h3>
-                  <Link href={'projects/' + project.slug}>
-                    <span className="absolute inset-0 rounded-3xl" />
-                    <Image
-                      src={urlForImage(project.logo)}
-                      width={400}
-                      height={400}
-                      alt={project.logo.alt}
-                      className="h-16 w-16"
-                      unoptimized
-                    />
-                  </Link>
-                </h3>
-                <p className="mt-6 flex items-center gap-x-2 text-sm text-neutral-950">
-                  {project.endAt ? (
-                    <time dateTime={moment(project.endAt).format('YYYY')}>
-                      {moment(project.endAt).format('YYYY')}
+          {projects.map((project) => {
+            const date = project.endAt ?? project.startAt
+
+            return (
+              <FadeIn key={project.slug} className="flex">
+                <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out hover:bg-brand-100/50 sm:p-8">
+                  <h3>
+                    <Link href={'projects/' + project.slug}>
+                      <span className="absolute inset-0 rounded-3xl" />
+                      <Image
+                        src={urlForImage(project.logo)}
+                        width={400}
+                        height={400}
+                        alt={project.logo.alt}
+                        className="h-16 w-16"
+                        unoptimized
+                      />
+                    </Link>
+                  </h3>
+                  <p className="mt-6 flex items-center gap-x-2 text-sm text-neutral-950">
+                    <time dateTime={moment(date).format('YYYY')}>
+                      {moment(date).format('YYYY')}
                     </time>
-                  ) : (
-                    <time dateTime={moment(project.startAt).format('YYYY')}>
-                      {moment(project.startAt).format('YYYY')}
-                    </time>
-                  )}
-                  <span className="text-neutral-300" aria-hidden="true">
-                    /
-                  </span>
-                  {project.tags.map((tag, index) => {
-                    return (
-                      <span key={`tag-${index}`} className="text-lg font-medium text-brand-400">
-                        #{project.tags}
-                      </span>
-                    )
-                  })}
-                </p>
-                <p className="mt-6 font-display text-2xl font-semibold text-neutral-950">
-                  {project.title}
-                </p>
-                <p className="mt-4 text-base text-neutral-600">{project.description}</p>
-              </article>
-            </FadeIn>
-          ))}
+                    <span className="text-neutral-300" aria-hidden="true">
+                      /
+                    </span>
+                    {project.tags.map((tag, index) => {
+                      return (
+                        <span key={`tag-${index}`} className="text-lg font-medium text-brand-400">
+                          #{project.tags}
+                        </span>
+                      )
+                    })}
+                  </p>
+                  <p className="mt-6 font-display text-2xl font-semibold text-neutral-950">
+                    {project.title}
+                  </p>
+                  <p className="mt-4 text-lg text-neutral-600">{project.description}</p>
+                </article>
+              </FadeIn>
+            )
+          })}
           <FadeIn key="viewAll" className="lg:col-span-3">
             <Link
               href="/projects"
@@ -115,22 +113,22 @@ function Services() {
             </FadeIn>
           </div>
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="#1 dApp Development">
+            <ListItem title="dApp Development">
               Transform your ideas into reality with modern front-end applications using Next.js and
               TailwindCSS, seamlessly integrated with web3 features. Our dApps offer a user-friendly
               interface and robust performance for an engaging user experience.
             </ListItem>
-            <ListItem title="#2 Smart Contract Development">
+            <ListItem title="Smart Contract Development">
               We craft highly secure smart contracts using Hardhat and Foundry, deployable on any
               EVM-compatible blockchain. Trust Etherwave Labs to build and audit your smart
               contracts, ensuring maximum security and reliability.
             </ListItem>
-            <ListItem title="#3 Backend Development">
+            <ListItem title="Backend Development">
               Our backend development services cover databases, scripts, bots, and CI/CD pipelines.
               We create scalable and resilient infrastructures tailored to your needs, ensuring
               smooth and efficient operations.
             </ListItem>
-            <ListItem title="#4 Web3/Blockchain Consulting">
+            <ListItem title="Web3/Blockchain Consulting">
               Navigate the complexities of web3 and blockchain technology with our expert consulting
               services. We provide insightful guidance and practical solutions to help you achieve
               your goals and maximize your potential in the decentralized world.
@@ -158,10 +156,10 @@ export default async function Home() {
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             Your Gateway to Next-Generation Blockchain Solutions
           </h1>
-          <p className="mt-6 text-xl text-neutral-600">
-            At Etherwave Labs, we build cutting-edge dApps, secure smart contracts, and robust
-            backend solutions. Harness the power of blockchain and web3 with our expert development
-            and consulting services.
+          <p className="mt-6 text-2xl text-neutral-600">
+            At Etherwave Labs, we build <u>cutting-edge dApps</u>, secure <u>smart contracts</u>,
+            and robust <u>backend solutions</u>. Harness the power of blockchain and web3 with our
+            expert development and consulting services.
           </p>
         </FadeIn>
       </Container>

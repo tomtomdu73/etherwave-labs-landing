@@ -20,64 +20,63 @@ function ProjectsList({ projects }: { projects: ProjectType[] }) {
         <h2 className="font-display text-2xl font-semibold text-neutral-950">Projects</h2>
       </FadeIn>
       <div className="mt-10 space-y-20 sm:space-y-24 lg:space-y-32">
-        {projects.map((project) => (
-          <FadeIn key={project.id}>
-            <article>
-              <Border className="grid grid-cols-3 gap-x-8 gap-y-8 pt-16">
-                <div className="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
-                  <div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
-                    <Image
-                      width={1400}
-                      height={1400}
-                      src={urlForImage(project.logo)}
-                      alt=""
-                      className="h-16 w-16 flex-none"
-                      unoptimized
-                    />
-                    <h3 className="mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <div className="mt-1 flex gap-x-4 sm:mt-0 lg:block">
-                    <p className="text-sm tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
-                      {project.stacks.join(' - ')}
-                    </p>
-                    <p className="text-sm text-neutral-950 lg:mt-2">
-                      {project.endAt ? (
-                        <time dateTime={moment(project.endAt).format('YYYY')}>
-                          {moment(project.endAt).format('YYYY')}
+        {projects.map((project) => {
+          const date = project.endAt ?? project.startAt
+          return (
+            <FadeIn key={project.id}>
+              <article>
+                <Border className="grid grid-cols-3 gap-x-8 gap-y-8 pt-16">
+                  <div className="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
+                    <div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
+                      <Image
+                        width={1400}
+                        height={1400}
+                        src={urlForImage(project.logo)}
+                        alt=""
+                        className="h-16 w-16 flex-none"
+                        unoptimized
+                      />
+                      <h3 className="text-md mt-6 font-semibold text-neutral-950 sm:mt-0 lg:mt-8">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="mt-1 flex gap-x-4 sm:mt-0 lg:block">
+                      <p className="text-md tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
+                        {project.stacks.join(' - ')}
+                      </p>
+                      <p className="text-sm text-neutral-950 lg:mt-2">
+                        <time dateTime={moment(date).format('YYYY')}>
+                          {moment(date).format('YYYY')}
                         </time>
-                      ) : (
-                        'Ongoing'
-                      )}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
+                    <p className="font-display text-4xl font-medium text-neutral-950">
+                      <Link href={'projects/' + project.slug}>{project.title}</Link>
                     </p>
-                  </div>
-                </div>
-                <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
-                  <p className="font-display text-4xl font-medium text-neutral-950">
-                    <Link href={'projects/' + project.slug}>{project.title}</Link>
-                  </p>
-                  <div className="mt-6 space-y-6 text-base text-neutral-600">
-                    <p>{project.description}</p>
-                  </div>
-                  <div className="mt-8 flex">
-                    <Button
-                      href={'projects/' + project.slug}
-                      aria-label={`Read case study: ${project.title}`}
-                    >
-                      Read case study
-                    </Button>
-                  </div>
-                  {/* {project.testimonial && (
+                    <div className="mt-6 space-y-6 text-lg text-neutral-600">
+                      <p>{project.description}</p>
+                    </div>
+                    <div className="mt-8 flex">
+                      <Button
+                        href={'projects/' + project.slug}
+                        aria-label={`Read case study: ${project.title}`}
+                      >
+                        Read case study
+                      </Button>
+                    </div>
+                    {/* {project.testimonial && (
                     <Blockquote author={project.testimonial.author} className="mt-12">
                       {project.testimonial.content}
                     </Blockquote>
                   )} */}
-                </div>
-              </Border>
-            </article>
-          </FadeIn>
-        ))}
+                  </div>
+                </Border>
+              </article>
+            </FadeIn>
+          )
+        })}
       </div>
     </Container>
   )
@@ -94,11 +93,12 @@ export default async function Projects() {
 
   return (
     <>
-      <PageIntro eyebrow="Our work" title="Proven solutions for real-world problems.">
+      <PageIntro eyebrow="" title="Our Projects with Valued Clients">
         <p>
-          We believe in efficiency and maximizing our resources to provide the best value to our
-          clients. The primary way we do that is by re-using the same five projects we’ve been
-          developing for the past decade.
+          At Etherwave Labs, we are proud to partner with forward-thinking businesses and
+          innovators. Discover how we've helped our clients achieve success with our cutting-edge
+          blockchain solutions. Explore our client stories and see the impact of our expertise in
+          action.
         </p>
       </PageIntro>
 
