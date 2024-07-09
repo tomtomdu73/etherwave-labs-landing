@@ -15,7 +15,7 @@ import Stacks from '@/components/Stacks'
 
 function ProjectsList({ projects }: { projects: ProjectType[] }) {
   return (
-    <Container className="mt-40">
+    <Container className="mt-24 sm:mt-32 md:mt-56">
       <FadeIn>
         <h2 className="font-display text-2xl font-semibold text-neutral-950">Projects</h2>
       </FadeIn>

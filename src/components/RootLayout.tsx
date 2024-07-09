@@ -225,7 +225,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
       >
         <motion.div layout className="relative isolate flex w-full flex-col pt-9">
           <GridPattern
-            className="stroke-brand-950/5 absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-brand-100/60 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
+            className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-brand-100/60 stroke-brand-100/70 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"
             yOffset={-96}
             interactive
           />
