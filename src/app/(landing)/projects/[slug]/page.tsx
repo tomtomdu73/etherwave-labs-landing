@@ -8,6 +8,7 @@ import { GrayscaleTransitionImage } from '@/components/GrayscaleTransitionImage'
 import { PageIntro } from '@/components/PageIntro'
 import { ProjectType, getProject } from '@/lib/sanity/project.query'
 import { urlForImage } from '@/sanity/lib/image'
+import { ArrowLongRightIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline'
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },
@@ -54,6 +55,13 @@ export default async function Project({ params }: { params: { slug: string } }) 
         <header>
           <PageIntro eyebrow="Case Study" title={project.title} centered>
             <p>{project.description}</p>
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              className="mt-6 inline-block font-medium text-brand-400 hover:text-brand-500"
+            >
+              Visit Project <ArrowUpRightIcon className="inline-block h-4 w-4" />
+            </a>
           </PageIntro>
 
           <FadeIn>
