@@ -6,7 +6,7 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import nextjsLogo from '@/assets/stacks/nextjs.svg'
 import nodejsLogo from '@/assets/stacks/nodejs.svg'
-import ethereumLogo from '@/assets/stacks/ethereum.png'
+import pwaLogo from '@/assets/stacks/pwa.svg'
 import tailwindLogo from '@/assets/stacks/tailwindcss.svg'
 import framerLogo from '@/assets/stacks/framer.svg'
 import wagmiLogo from '@/assets/stacks/wagmi.svg'
@@ -18,18 +18,18 @@ import stripeLogo from '@/assets/stacks/stripe.svg'
 import openzeppelinLogo from '@/assets/stacks/openzeppelin.svg'
 
 const stacks = [
-  ['Next.js', nextjsLogo],
-  ['Wagmi', wagmiLogo],
-  ['Tailwindcss', tailwindLogo],
-  ['Framer Motion', framerLogo],
-  ['Node.js', nodejsLogo],
-  ['The Graph', thegraphLogo],
-  ['Biconomy', biconomyLogo],
-  ['Lens', lensLogo],
-  ['Stripe', stripeLogo],
-  ['Ethereum', ethereumLogo],
-  ['Alchemy', alchemyLogo],
-  ['Openzeppelin', openzeppelinLogo],
+  ['Next.js', nextjsLogo, 'https://nextjs.org'],
+  ['Wagmi', wagmiLogo, 'https://wagmi.io'],
+  ['Tailwindcss', tailwindLogo, 'https://tailwindcss.com'],
+  ['Framer Motion', framerLogo, 'https://www.framer.com/motion'],
+  ['Node.js', nodejsLogo, 'https://nodejs.org/en'],
+  ['PWA', pwaLogo, 'https://web.dev/progressive-web-apps'],
+  ['Biconomy', biconomyLogo, 'https://biconomy.io'],
+  ['Lens', lensLogo, 'https://lens.xyz'],
+  ['Stripe', stripeLogo, 'https://stripe.com'],
+  ['The Graph', thegraphLogo, 'https://thegraph.com'],
+  ['Alchemy', alchemyLogo, 'https://www.alchemy.com/'],
+  ['Openzeppelin', openzeppelinLogo, 'https://openzeppelin.com'],
 ]
 
 export default function Stacks() {
@@ -46,20 +46,22 @@ export default function Stacks() {
 
       <Container>
         <FadeIn className="flex items-center gap-x-8">
-          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-neutral-950 sm:text-left">
+          <h2 className="text-md text-center font-display font-semibold tracking-wider text-neutral-950 sm:text-left">
             Some amazing technologies we love working with
           </h2>
           <div className="h-px flex-auto bg-neutral-400" />
         </FadeIn>
         <FadeInStagger faster>
-          <ul
-            role="list"
-            className="mt-10 grid grid-cols-2 items-center gap-x-8 gap-y-10 lg:grid-cols-4"
-          >
-            {stacks.map(([client, logo]) => (
-              <li key={client}>
+          <ul role="list" className="group mt-10 grid grid-cols-2 items-center lg:grid-cols-4">
+            {stacks.map(([client, logo, url]) => (
+              <li
+                key={client}
+                className="px-8 py-4 transition-opacity duration-200 ease-in-out hover:!opacity-100 group-hover:opacity-20"
+              >
                 <FadeIn>
-                  <Image className="w-36" src={logo} alt={client} width={250} />
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <Image className="w-36" src={logo} alt={client} width={250} />
+                  </a>
                 </FadeIn>
               </li>
             ))}
