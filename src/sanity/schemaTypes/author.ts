@@ -9,6 +9,7 @@ export default defineType({
       name: 'name',
       title: 'Name',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -18,6 +19,7 @@ export default defineType({
         source: 'name',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
@@ -33,6 +35,7 @@ export default defineType({
           title: 'Alternative Text',
         },
       ],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: 'LinkedIn URL',
@@ -41,7 +44,7 @@ export default defineType({
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https'],
-        }),
+        }).required(),
     }),
     defineField({
       title: 'Github URL',
@@ -50,7 +53,7 @@ export default defineType({
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https'],
-        }),
+        }).required(),
     }),
     defineField({
       name: 'bio',
