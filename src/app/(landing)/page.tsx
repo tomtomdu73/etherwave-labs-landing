@@ -18,6 +18,7 @@ import { ProjectType, getProjects } from '@/lib/sanity/project.query'
 import { AuthorType, getAuthors } from '@/lib/sanity/author.query'
 import { urlForImage } from '@/sanity/lib/image'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
+import { StatList, StatListItem } from '@/components/StatList'
 
 function Projects({ projects }: { projects: ProjectType[] }) {
   return (
@@ -92,13 +93,12 @@ function Services() {
     <>
       <SectionIntro
         // eyebrow="Services"
-        title="Our Services"
+        title="What we do"
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          We are committed to driving innovation and excellence in the blockchain space. Our mission
-          is to provide top-tier development services that empower businesses to harness the full
-          potential of decentralized technologies.
+          We help startups and enterprises design, build and ship innovative blockchain solutions,
+          fast.
         </p>
       </SectionIntro>
       <Container className="mt-16">
@@ -151,7 +151,7 @@ export default async function Home() {
 
   return (
     <>
-      <Container className="mt-24 sm:mt-32 md:mt-56">
+      <Container className="mt-24 sm:mt-32 md:mt-40">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             Your Gateway to Next-Generation Blockchain Solutions
@@ -162,6 +162,12 @@ export default async function Home() {
             expert development and consulting services.
           </p>
         </FadeIn>
+
+        <StatList className="mt-16">
+          <StatListItem value="10+" label="Years in Software Development" />
+          <StatListItem value="3+" label="Years in Blockchain" />
+          <StatListItem value="15+" label="Completed Projects" />
+        </StatList>
       </Container>
 
       <Projects projects={projects} />

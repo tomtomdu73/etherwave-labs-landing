@@ -17,8 +17,7 @@ export default function Team({ members }: { members: AuthorType[] }) {
         <p>
           Our team at Etherwave Labs brings together over 10 years of experience in the software
           development field, having worked with international clients and on diverse projects across
-          the globe. With a cumulative experience of over 5 years in blockchain technology, we have
-          the knowledge and skills to deliver innovative and secure solutions.
+          the globe.
         </p>
       </SectionIntro>
       <Container className="mt-24">
