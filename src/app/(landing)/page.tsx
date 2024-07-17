@@ -23,7 +23,7 @@ import { StatList, StatListItem } from '@/components/StatList'
 function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <>
-      <SectionIntro title="Diverse Projects, Proven Success" className="mt-24 sm:mt-32 lg:mt-80">
+      <SectionIntro title="Diverse Projects, Proven Success" className="mt-24 sm:mt-32 lg:mt-72">
         <p>
           Explore some of the groundbreaking projects we've developed and see how Etherwave Labs has
           helped businesses achieve their goals in the blochchain space.
