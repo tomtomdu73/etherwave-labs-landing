@@ -164,9 +164,9 @@ export default async function Home() {
         </FadeIn>
 
         <StatList className="mt-16">
+          <StatListItem value="15+" label="Completed Projects" />
           <StatListItem value="10+" label="Years in Software Development" />
           <StatListItem value="3+" label="Years in Blockchain" />
-          <StatListItem value="15+" label="Completed Projects" />
         </StatList>
       </Container>
 
