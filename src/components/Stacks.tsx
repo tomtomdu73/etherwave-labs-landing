@@ -16,6 +16,9 @@ import alchemyLogo from '@/assets/stacks/alchemy.svg'
 import lensLogo from '@/assets/stacks/lens.svg'
 import stripeLogo from '@/assets/stacks/stripe.svg'
 import openzeppelinLogo from '@/assets/stacks/openzeppelin.svg'
+import firebaseLogo from '@/assets/stacks/firebase.svg'
+import strapiLogo from '@/assets/stacks/strapi.svg'
+import nestLoog from '@/assets/stacks/nest.svg'
 
 const stacks = [
   ['Next.js', nextjsLogo, 'https://nextjs.org'],
@@ -30,6 +33,9 @@ const stacks = [
   ['The Graph', thegraphLogo, 'https://thegraph.com'],
   ['Alchemy', alchemyLogo, 'https://www.alchemy.com/'],
   ['Openzeppelin', openzeppelinLogo, 'https://openzeppelin.com'],
+  ['Firebase', firebaseLogo, 'https://firebase.google.com'],
+  ['Strapi', strapiLogo, 'https://strapi.io'],
+  ['Nest', nestLoog, 'https://nestjs.com'],
 ]
 
 export default function Stacks() {
@@ -52,7 +58,7 @@ export default function Stacks() {
           <div className="h-px flex-auto bg-neutral-400" />
         </FadeIn>
         <FadeInStagger faster>
-          <ul role="list" className="group mt-10 grid grid-cols-2 items-center lg:grid-cols-4">
+          <ul role="list" className="group mt-10 grid grid-cols-3 items-center lg:grid-cols-5">
             {stacks.map(([client, logo, url]) => (
               <li
                 key={client}
