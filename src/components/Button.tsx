@@ -1,14 +1,24 @@
+'use client'
+
 import Link from 'next/link'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
 type ButtonProps = {
   invert?: boolean
+  withMotion?: boolean
 } & (
   | React.ComponentPropsWithoutRef<typeof Link>
   | (React.ComponentPropsWithoutRef<'button'> & { href?: undefined })
 )
 
-export function Button({ invert = false, className, children, ...props }: ButtonProps) {
+export function Button({
+  invert = false,
+  withMotion = false,
+  className,
+  children,
+  ...props
+}: ButtonProps) {
   className = clsx(
     className,
     'inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition',
@@ -28,8 +38,10 @@ export function Button({ invert = false, className, children, ...props }: Button
   }
 
   return (
-    <Link className={className} {...props}>
-      {inner}
+    <Link {...props}>
+      <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }} className={className}>
+        {inner}
+      </motion.button>
     </Link>
   )
 }
