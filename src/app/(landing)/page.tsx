@@ -142,7 +142,7 @@ function Services() {
 
 export const metadata: Metadata = {
   description:
-    'We are an blockchain development agency focused on helping clients transitionning to web3 smoothly.',
+    'At Etherwave Labs, we build cutting-edge dApps, secure smart contracts, and robust backend solutions. Harness the power of blockchain and web3 with our expert development and consulting services.',
 }
 
 export default async function Home() {
