@@ -9,6 +9,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { Offices } from '@/components/Offices'
 import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
+import CalendlyEmbedded from '@/components/CalendlyEmbedded'
 
 function TextInput({
   label,
@@ -55,22 +56,10 @@ function ContactForm() {
   return (
     <FadeIn className="lg:order-last">
       <form>
-        <h2 className="font-display text-base font-semibold text-neutral-950">
-          Work inquiries
-        </h2>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
           <TextInput label="Name" name="name" autoComplete="name" />
-          <TextInput
-            label="Email"
-            type="email"
-            name="email"
-            autoComplete="email"
-          />
-          <TextInput
-            label="Company"
-            name="company"
-            autoComplete="organization"
-          />
+          <TextInput label="Email" type="email" name="email" autoComplete="email" />
+          <TextInput label="Company" name="company" autoComplete="organization" />
           <TextInput label="Phone" type="tel" name="phone" autoComplete="tel" />
           <TextInput label="Message" name="message" />
           <div className="border border-neutral-300 px-6 py-8 first:rounded-t-2xl last:rounded-b-2xl">
@@ -96,20 +85,16 @@ function ContactForm() {
 function ContactDetails() {
   return (
     <FadeIn>
-      <h2 className="font-display text-base font-semibold text-neutral-950">
-        Our offices
-      </h2>
+      <h2 className="font-display text-base font-semibold text-neutral-950">Our offices</h2>
       <p className="mt-6 text-base text-neutral-600">
-        Prefer doing things in person? We don’t but we have to list our
-        addresses here for legal reasons.
+        Prefer doing things in person? We don’t but we have to list our addresses here for legal
+        reasons.
       </p>
 
       <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
 
       <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-neutral-950">
-          Email us
-        </h2>
+        <h2 className="font-display text-base font-semibold text-neutral-950">Email us</h2>
         <dl className="mt-6 grid grid-cols-1 gap-8 text-sm sm:grid-cols-2">
           {[
             ['Careers', 'careers@studioagency.com'],
@@ -118,10 +103,7 @@ function ContactDetails() {
             <div key={email}>
               <dt className="font-semibold text-neutral-950">{label}</dt>
               <dd>
-                <Link
-                  href={`mailto:${email}`}
-                  className="text-neutral-600 hover:text-neutral-950"
-                >
+                <Link href={`mailto:${email}`} className="text-neutral-600 hover:text-neutral-950">
                   {email}
                 </Link>
               </dd>
@@ -131,9 +113,7 @@ function ContactDetails() {
       </Border>
 
       <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-neutral-950">
-          Follow us
-        </h2>
+        <h2 className="font-display text-base font-semibold text-neutral-950">Follow us</h2>
         <SocialMedia className="mt-6" />
       </Border>
     </FadeIn>
@@ -141,21 +121,28 @@ function ContactDetails() {
 }
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Let’s work together. We can’t wait to hear from you.',
+  title: 'Get in touch',
+  description: 'We can help you Design, Build & Ship your web3 Products.',
 }
 
 export default function Contact() {
   return (
     <>
-      <PageIntro eyebrow="Contact us" title="Let’s work together">
-        <p>We can’t wait to hear from you.</p>
+      <PageIntro eyebrow="" title="Get in touch">
+        <p>
+          Whether you have a question, need a consultation, or are ready to start your next
+          blockchain project, our team is here to help. Reach out to us today and let's discuss how
+          Etherwave Labs can support your goals with our expert development and consulting services.
+        </p>
       </PageIntro>
 
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
+      <Container className="mt-24 sm:mt-32 lg:mt-20">
+        {/* <div className="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
           <ContactForm />
           <ContactDetails />
+        </div> */}
+        <div className="mx-auto max-w-5xl">
+          <CalendlyEmbedded url="https://calendly.com/etherwave-labs/30min" />
         </div>
       </Container>
     </>

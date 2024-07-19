@@ -24,6 +24,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 1,
   })
 
+  sitemap.push({
+    url: `${process.env.NEXT_PUBLIC_APP_URL}/contact`,
+    lastModified: new Date(),
+    changeFrequency: 'yearly',
+    priority: 1,
+  })
+
   //add post slugs
   const posts = (await getAllPostsSlug()) as ProjectSlugType[]
   console.log(posts)
