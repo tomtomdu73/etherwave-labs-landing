@@ -11,14 +11,13 @@ import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import Stacks from '@/components/Stacks'
 import Team from '@/components/Team'
-
-import imageLaptop from '@/assets/images/laptop.jpg'
-
 import { ProjectType, getProjects } from '@/lib/sanity/project.query'
 import { AuthorType, getAuthors } from '@/lib/sanity/author.query'
 import { urlForImage } from '@/sanity/lib/image'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 import { StatList, StatListItem } from '@/components/StatList'
+import { Services } from '@/components/Services'
+import imageLaptop from '@/assets/images/laptop.jpg'
 
 function Projects({ projects }: { projects: ProjectType[] }) {
   return (
@@ -83,58 +82,6 @@ function Projects({ projects }: { projects: ProjectType[] }) {
             </Link>
           </FadeIn>
         </FadeInStagger>
-      </Container>
-    </>
-  )
-}
-
-function Services() {
-  return (
-    <>
-      <SectionIntro
-        // eyebrow="Services"
-        title="What we do"
-        className="mt-24 sm:mt-32 lg:mt-40"
-      >
-        <p>
-          We help startups and enterprises design, build and ship innovative blockchain solutions,
-          fast.
-        </p>
-      </SectionIntro>
-      <Container className="mt-16">
-        <div className="lg:flex lg:items-center lg:justify-end">
-          <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
-            <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
-              <StylizedImage
-                src={imageLaptop}
-                sizes="(min-width: 1024px) 41rem, 31rem"
-                className="justify-center lg:justify-end"
-              />
-            </FadeIn>
-          </div>
-          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="dApp Development">
-              Transform your ideas into reality with modern front-end applications using Next.js and
-              TailwindCSS, seamlessly integrated with web3 features. Our dApps offer a user-friendly
-              interface and robust performance for an engaging user experience.
-            </ListItem>
-            <ListItem title="Smart Contract Development">
-              We craft highly secure smart contracts using Hardhat and Foundry, deployable on any
-              EVM-compatible blockchain. Trust Etherwave Labs to build and audit your smart
-              contracts, ensuring maximum security and reliability.
-            </ListItem>
-            <ListItem title="Backend Development">
-              Our backend development services cover databases, scripts, bots, and CI/CD pipelines.
-              We create scalable and resilient infrastructures tailored to your needs, ensuring
-              smooth and efficient operations.
-            </ListItem>
-            <ListItem title="Web3/Blockchain Consulting">
-              Navigate the complexities of web3 and blockchain technology with our expert consulting
-              services. We provide insightful guidance and practical solutions to help you achieve
-              your goals and maximize your potential in the decentralized world.
-            </ListItem>
-          </List>
-        </div>
       </Container>
     </>
   )
