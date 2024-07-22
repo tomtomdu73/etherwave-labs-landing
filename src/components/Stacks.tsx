@@ -53,7 +53,7 @@ export default function Stacks() {
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-md text-center font-display font-semibold tracking-wider text-neutral-950 sm:text-left">
-            Some amazing technologies we love working with
+            Some great tools we use to create magic
           </h2>
           <div className="h-px flex-auto bg-neutral-400" />
         </FadeIn>
