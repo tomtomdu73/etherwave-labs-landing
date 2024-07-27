@@ -17,7 +17,6 @@ import { urlForImage } from '@/sanity/lib/image'
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline'
 import { StatList, StatListItem } from '@/components/StatList'
 import { Services } from '@/components/Services'
-import imageLaptop from '@/assets/images/laptop.jpg'
 
 function Projects({ projects }: { projects: ProjectType[] }) {
   return (
