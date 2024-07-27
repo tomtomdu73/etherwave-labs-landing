@@ -4,7 +4,7 @@ import {
   CursorArrowRaysIcon,
   InformationCircleIcon,
 } from '@heroicons/react/24/outline'
-import { BentoGrid, BentoGridItem } from '@/components/ui/BentoGrid'
+import { BentoGrid, BentoGridItem } from '@/components/BentoGrid'
 import { Container } from '@/components/Container'
 import { SectionIntro } from '@/components/SectionIntro'
 import backendPhoto from '@/assets/images/backend.jpg'

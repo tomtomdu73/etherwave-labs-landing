@@ -2,7 +2,7 @@ import Image, { StaticImageData } from 'next/image'
 
 import cn from '@/utils/cn'
 
-const Skeleton = ({ children }) => (
+const Skeleton = ({ children }: { children?: React.ReactNode }) => (
   <div className="dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex h-full min-h-[6rem] w-full flex-1 rounded-xl border border-transparent bg-neutral-100 [mask-image:radial-gradient(ellipse_at_center,white,transparent)] dark:border-white/[0.2] dark:bg-black">
     {children}
   </div>
@@ -45,7 +45,7 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        'group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-transparent bg-white p-4 transition duration-200 hover:bg-brand-100/50 hover:shadow-xl',
+        'group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border border-transparent bg-white p-4 ring-1 ring-neutral-950/5 transition duration-200 hover:bg-brand-100/50 hover:shadow-xl',
         className,
       )}
     >

@@ -9,10 +9,7 @@ import { GitHubIcon, LinkedinIcon } from './SocialMedia'
 
 function TeamCard({ person }: { person: AuthorType }) {
   return (
-    <li
-      key={person.id}
-      className="relative rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out hover:bg-brand-100/50 sm:p-4"
-    >
+    <li className="relative rounded-3xl p-6 ring-1 ring-neutral-950/5 transition ease-in-out hover:bg-brand-100/50 sm:p-4">
       <FadeIn>
         <div className="flex flex-col items-center">
           <Image
@@ -79,7 +76,7 @@ export default function Team({ members }: { members: AuthorType[] }) {
                 className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8"
               >
                 {members.map((person) => (
-                  <TeamCard person={person} />
+                  <TeamCard person={person} key={person.id} />
                 ))}
               </ul>
             </div>
