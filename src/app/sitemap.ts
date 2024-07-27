@@ -2,7 +2,6 @@ import { MetadataRoute } from 'next'
 
 import { ProjectSlugType, getAllProjectsSlug } from '@/lib/sanity/project.query'
 import { getAllPostsSlug } from '@/lib/sanity/post.query'
-import { Project } from 'next/dist/build/swc'
 
 type SitemapItem = {
   url: string
@@ -26,6 +25,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   sitemap.push({
     url: `${process.env.NEXT_PUBLIC_APP_URL}/contact`,
+    lastModified: new Date(),
+    changeFrequency: 'yearly',
+    priority: 1,
+  })
+
+  sitemap.push({
+    url: `${process.env.NEXT_PUBLIC_APP_URL}/schedule-call`,
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: 1,
