@@ -1,11 +1,12 @@
 'use client'
 import { useEffect, useId, useRef, useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
+import ReCAPTCHA from 'react-google-recaptcha'
 
+import { verifyCaptcha } from '@/actions/verify-captcha'
 import { sendEmail } from '@/actions/form'
 import { Button } from '@/components/Button'
 import { FadeIn } from '@/components/FadeIn'
-import { set } from 'sanity'
 
 function TextArea({
   label,
@@ -73,11 +74,11 @@ function RadioInput({
   )
 }
 
-export function SubmitButton() {
+function SubmitButton({ isVerified = false }: { isVerified: boolean }) {
   const { pending } = useFormStatus()
 
   return (
-    <Button type="submit" className="mt-10" disabled={pending}>
+    <Button type="submit" className="mt-10" disabled={pending || !isVerified}>
       {pending ? 'Sending' : 'Send Message'}
     </Button>
   )
@@ -85,15 +86,17 @@ export function SubmitButton() {
 
 export default function ContactForm() {
   const contactForm = useRef<HTMLFormElement>(null)
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
   const [sendEmailState, sendEmailAction] = useFormState(sendEmail, {
     error: null,
     success: false,
   })
   const [message, setMessage] = useState<string>('')
   const [errors, setErrors] = useState<string>('')
+  const [isVerified, setIsverified] = useState<boolean>(false)
 
   useEffect(() => {
-    if (sendEmailState.success) {
+    if (sendEmailState.success && contactForm.current) {
       setErrors('')
       contactForm.current.reset()
       setMessage('Thank you for reaching out! We will get back to you shortly.')
@@ -105,6 +108,12 @@ export default function ContactForm() {
       setErrors(JSON.stringify(sendEmailState.errors))
     }
   }, [sendEmailState])
+
+  const handleCaptchaSubmission = async (token: string | null) => {
+    await verifyCaptcha(token)
+      .then(() => setIsverified(true))
+      .catch(() => setIsverified(false))
+  }
 
   return (
     <FadeIn className="lg:order-last">
@@ -135,9 +144,15 @@ export default function ContactForm() {
             </fieldset>
           </div>
         </div>
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+          ref={recaptchaRef}
+          onChange={handleCaptchaSubmission}
+          className="mt-10"
+        />
         {message && <p className="mt-4 text-green-500">{message}</p>}
         {errors && <p className="mt-4 text-red-500">{errors}</p>}
-        <SubmitButton />
+        <SubmitButton isVerified={isVerified} />
       </form>
     </FadeIn>
   )
