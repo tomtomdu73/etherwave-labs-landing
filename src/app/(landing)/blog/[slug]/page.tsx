@@ -8,6 +8,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { Post, getPost } from '@/lib/sanity/post.query'
 import { urlForImage } from '@/sanity/lib/image'
 import { ptComponents } from './helper'
+import Image from 'next/image'
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },
@@ -50,16 +51,28 @@ export default async function Article({ params }: { params: { slug: string } }) 
 
   return (
     <>
-      <Container as="article" className="mt-24 sm:mt-32 lg:mt-40">
+      <Container as="article" className="mt-24 max-w-4xl sm:mt-32 lg:mt-40">
         <FadeIn>
-          <header className="mx-auto flex max-w-5xl flex-col text-center">
+          <header className="mx-auto mb-20 flex max-w-5xl flex-col text-center">
             <h1 className="mt-6 font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
               {article.title}
             </h1>
             <time dateTime={article.publishedAt} className="order-first text-sm text-neutral-950">
               {moment(article.publishedAt).format('MMMM D, YYYY')}
             </time>
-            <p className="mt-6 text-sm font-semibold text-neutral-950">by {article.author.name}</p>
+            <div className="mt-6 text-sm font-semibold text-neutral-950">
+              {' '}
+              <div className="inline-flex items-center gap-2">
+                <Image
+                  alt=""
+                  width={100}
+                  height={100}
+                  src={urlForImage(article.author.image)}
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <span className="font-semibold">{article.author.name}</span>
+              </div>
+            </div>
           </header>
         </FadeIn>
 

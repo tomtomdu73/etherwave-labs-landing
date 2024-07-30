@@ -19,7 +19,7 @@ export const ptComponents: PortableTextComponents = {
           <figure className="my-10 flex flex-col items-center">
             <Image
               className="w-1/2 rounded-sm bg-gray-50 object-cover ring-2 ring-lime-200"
-              src={urlForImage(value).url()}
+              src={urlForImage(value)}
               alt={value.alt}
               width={800}
               height={400}
@@ -44,29 +44,29 @@ export const ptComponents: PortableTextComponents = {
   },
   block: {
     h2: ({ children }) => (
-      <h2 className="mb-5 mt-8 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-200">
+      <h2 className="mb-4 mt-10 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-200">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="my-5 text-xl font-semibold tracking-tight text-zinc-800 sm:text-xl dark:text-zinc-200">
+      <h3 className="mb-2 mt-4 text-2xl font-semibold tracking-tight text-zinc-800 sm:text-2xl dark:text-zinc-200">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h3 className="text-md sm:text-md mt-10 font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
+      <h3 className="sm:text-md mt-10 text-2xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
         {children}
       </h3>
     ),
-    normal: ({ children }) => <p className="my-3">{children}</p>,
+    normal: ({ children }) => <p className="my-4 text-justify indent-8 text-xl">{children}</p>,
   },
   list: {
     bullet: ({ children }) => <ul className="mx-8">{children}</ul>,
     number: ({ children }) => <ol className="mx-8">{children}</ol>,
   },
   listItem: {
-    bullet: ({ children }) => <li className="my-2 list-disc">{children}</li>,
-    number: ({ children }) => <li className="my-2 list-decimal">{children}</li>,
+    bullet: ({ children }) => <li className="my-2 list-disc text-lg">{children}</li>,
+    number: ({ children }) => <li className="my-2 list-decimal text-lg">{children}</li>,
   },
   marks: {
     strong: ({ children }) => <span className="font-semibold">{children}</span>,
@@ -74,7 +74,7 @@ export const ptComponents: PortableTextComponents = {
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
       return (
         <a
-          className="transition-color text-lime-600 duration-150 ease-in-out hover:text-lime-500 dark:text-lime-300 dark:hover:text-lime-200"
+          className="transition-color text-brand-500 underline underline-offset-4 duration-150 ease-in-out hover:text-brand-400"
           href={value?.href}
           target={target}
           rel={target === '_blank' ? 'noindex nofollow' : 'undefined'}
@@ -88,7 +88,7 @@ export const ptComponents: PortableTextComponents = {
       const href = `/blog/${slug.current}`
       return (
         <Link
-          className="transition-color text-lime-600 duration-150 ease-in-out hover:text-lime-500 dark:text-lime-300 dark:hover:text-lime-200"
+          className="transition-color text-brand-500 underline underline-offset-4 duration-150 ease-in-out hover:text-brand-400"
           href={href}
         >
           {children}
