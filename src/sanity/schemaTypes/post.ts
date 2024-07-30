@@ -25,7 +25,7 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'string',
-      validation: (Rule) => Rule.required().min(50).max(155),
+      validation: (Rule) => Rule.required().min(50).max(300),
     }),
     defineField({
       name: 'keywords',
