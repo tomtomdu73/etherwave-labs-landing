@@ -18,15 +18,15 @@ export const ptComponents: PortableTextComponents = {
         <ImageZoom>
           <figure className="my-10 flex flex-col items-center">
             <Image
-              className="w-1/2 rounded-sm bg-gray-50 object-cover ring-2 ring-lime-200"
+              className="w-[80%] rounded-sm bg-gray-50 object-cover"
               src={urlForImage(value)}
               alt={value.alt}
               width={800}
               height={400}
             />
-            {/* <figcaption className="mt-4 text-sm leading-6 text-gray-500">
-                        <i>Faucibus commodo massa rhoncus, volutpat.</i>
-                    </figcaption> */}
+            <figcaption className="mt-4 text-sm leading-6 text-gray-500">
+              <i>{value.caption}</i>
+            </figcaption>
           </figure>
         </ImageZoom>
       )

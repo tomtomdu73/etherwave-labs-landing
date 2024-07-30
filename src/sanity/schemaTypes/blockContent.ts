@@ -71,6 +71,12 @@ export default defineType({
           title: 'Alternative Text',
           validation: (Rule) => Rule.required(),
         },
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+          validation: (Rule) => Rule.required(),
+        },
       ],
     }),
     defineArrayMember({
