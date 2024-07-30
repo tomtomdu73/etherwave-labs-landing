@@ -23,7 +23,7 @@ export default async function Blog() {
 
   return (
     <>
-      <PageIntro eyebrow="Blog" title="The latest articles and news">
+      <PageIntro eyebrow="" title="Our latest articles">
         <p>
           Welcome to the Etherwave Labs Blog, your source for the latest news, insights, and
           tutorials in the blockchain industry. Whether you're a seasoned professional or a curious

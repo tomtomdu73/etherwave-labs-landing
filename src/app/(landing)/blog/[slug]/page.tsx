@@ -51,7 +51,7 @@ export default async function Article({ params }: { params: { slug: string } }) 
 
   return (
     <>
-      <Container as="article" className="mt-24 max-w-4xl sm:mt-32 lg:mt-40">
+      <Container as="article" className="mt-24 sm:mt-32 lg:mt-40">
         <FadeIn>
           <header className="mx-auto mb-20 flex max-w-5xl flex-col text-center">
             <h1 className="mt-6 font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
@@ -76,9 +76,11 @@ export default async function Article({ params }: { params: { slug: string } }) 
           </header>
         </FadeIn>
 
-        <FadeIn>
-          <PortableText value={article.body} components={ptComponents} />
-        </FadeIn>
+        <Container className="max-w-4xl">
+          <FadeIn>
+            <PortableText value={article.body} components={ptComponents} />
+          </FadeIn>
+        </Container>
       </Container>
       {/* 
       {moreArticles.length > 0 && (
