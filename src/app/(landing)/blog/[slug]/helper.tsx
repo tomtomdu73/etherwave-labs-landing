@@ -44,17 +44,17 @@ export const ptComponents: PortableTextComponents = {
   },
   block: {
     h2: ({ children }) => (
-      <h2 className="mb-4 mt-10 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-200">
+      <h2 className="mb-4 mt-10 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mb-2 mt-4 text-2xl font-semibold tracking-tight text-zinc-800 sm:text-2xl dark:text-zinc-200">
+      <h3 className="mb-2 mt-4 text-2xl font-semibold tracking-tight text-zinc-800 sm:text-2xl">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h3 className="sm:text-md mt-10 text-2xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
+      <h3 className="sm:text-md mt-10 text-2xl font-semibold tracking-tight text-zinc-800">
         {children}
       </h3>
     ),
