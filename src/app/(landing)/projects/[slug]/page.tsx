@@ -14,19 +14,19 @@ export async function generateMetadata(
   { params }: { params: { slug: string } },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const article = (await getProject(params.slug)) as ProjectType
+  const project = (await getProject(params.slug)) as ProjectType
 
   return {
-    title: article.title + ' - Etherwave Labs',
-    description: article.description,
+    title: project.title + ' - Etherwave Labs',
+    description: project.description,
     openGraph: {
-      title: article.title + ' - Etherwave Labs',
-      description: article.description,
-      url: `${process.env.APP_URL}/blog/${params.slug}`,
+      title: project.title + ' - Etherwave Labs',
+      description: project.description,
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/projects/${params.slug}`,
       siteName: 'Etherwave Labs',
       images: [
         {
-          url: urlForImage(article.image),
+          url: urlForImage(project.image),
           width: 800,
           height: 600,
         },
@@ -36,9 +36,9 @@ export async function generateMetadata(
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.title + ' - Etherwave Labs',
-      description: article.description,
-      images: [urlForImage(article.image)],
+      title: project.title + ' - Etherwave Labs',
+      description: project.description,
+      images: [urlForImage(project.image)],
     },
   }
 }

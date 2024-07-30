@@ -24,7 +24,7 @@ export async function generateMetadata(
     openGraph: {
       title: article.title + ' - Etherwave Labs',
       description: article.description,
-      url: `${process.env.APP_URL}/blog/${params.slug}`,
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${params.slug}`,
       siteName: 'Etherwave Labs',
       images: [
         {
