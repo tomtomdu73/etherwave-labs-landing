@@ -39,11 +39,11 @@ export default async function Blog() {
               <article>
                 <Border className="px-4 py-16 transition ease-in-out hover:bg-brand-100/50">
                   <div className="relative lg:-mx-4 lg:flex lg:justify-end">
-                    <div className="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
+                    <div className="pt-8 sm:pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
                       <h2 className="font-display text-2xl font-semibold text-neutral-950">
                         <Link href={'blog/' + article.slug}>{article.title}</Link>
                       </h2>
-                      <dl className="lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-4">
+                      <dl className="my-4 sm:m-0 lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-2">
                         <Link
                           href={'blog/' + article.slug}
                           className="transition-all hover:opacity-80"
@@ -61,9 +61,9 @@ export default async function Blog() {
                         {article.description}
                       </p>
                       <div className="flex items-center justify-between pr-10">
-                        <div className="flex items-center gap-x-4">
+                        <div className="absolute left-0 top-0 flex items-center gap-x-1 sm:gap-x-4 lg:static">
                           <dt className="sr-only">Published</dt>
-                          <dd className="absolute left-0 top-0 text-sm text-neutral-950 lg:static">
+                          <dd className="text-xs text-neutral-950 sm:text-sm">
                             <time dateTime={article.publishedAt}>
                               Published on{' '}
                               <strong>{moment(article.publishedAt).format('MMMM D, YYYY')}</strong>{' '}
@@ -78,15 +78,18 @@ export default async function Blog() {
                                 width={100}
                                 height={100}
                                 src={urlForImage(article.author.image)}
-                                className="h-12 w-12 rounded-full object-cover"
+                                className="hidden h-12 w-12 rounded-full object-cover sm:block"
                               />
-                              <span className="font-semibold">{article.author.name}</span>
+                              <span className="text-xs font-semibold sm:text-sm">
+                                {article.author.name}
+                              </span>
                             </div>
                           </dd>
                         </div>
                         <Button
                           href={'blog/' + article.slug}
                           aria-label={`Read more: ${article.title}`}
+                          className="my-4 block sm:m-0"
                         >
                           Read more
                         </Button>

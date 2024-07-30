@@ -76,11 +76,9 @@ export default async function Article({ params }: { params: { slug: string } }) 
           </header>
         </FadeIn>
 
-        <Container className="max-w-4xl">
-          <FadeIn>
-            <PortableText value={article.body} components={ptComponents} />
-          </FadeIn>
-        </Container>
+        <FadeIn className="mx-auto max-w-4xl">
+          <PortableText value={article.body} components={ptComponents} />
+        </FadeIn>
       </Container>
       {/* 
       {moreArticles.length > 0 && (
