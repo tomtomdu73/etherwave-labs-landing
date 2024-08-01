@@ -39,7 +39,7 @@ export async function getProject(slug: string): Promise<ProjectType> {
         startAt,
         endAt,
       }`,
-    tags: ['post'],
+    tags: ['project'],
     qParams: { slug },
   })
 }
@@ -60,7 +60,7 @@ export async function getProjects(): Promise<ProjectType[]> {
         startAt,
         endAt,
       }`,
-    tags: ['post'],
+    tags: ['project'],
   })
 }
 
@@ -71,6 +71,6 @@ export async function getAllProjectsSlug(): Promise<ProjectSlugType[]> {
               "slug": slug.current,
               "updatedAt": _updatedAt
       }`,
-    tags: ['post'],
+    tags: ['project'],
   })
 }
