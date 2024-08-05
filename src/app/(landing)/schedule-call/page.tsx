@@ -3,6 +3,7 @@ import { type Metadata } from 'next'
 import { Container } from '@/components/Container'
 import { PageIntro } from '@/components/PageIntro'
 import CalendlyEmbedded from '@/components/CalendlyEmbedded'
+import { config } from '@/config'
 
 export const metadata: Metadata = {
   title: 'Schedule a call',
@@ -23,7 +24,7 @@ export default function ScheduleCall() {
 
       <Container className="mt-24 sm:mt-32 lg:mt-20">
         <div className="mx-auto max-w-5xl">
-          <CalendlyEmbedded url="https://calendly.com/etherwave-labs/30min" />
+          <CalendlyEmbedded url={config.calendlyUrl} />
         </div>
       </Container>
     </>
