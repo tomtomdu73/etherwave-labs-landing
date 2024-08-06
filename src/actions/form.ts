@@ -47,8 +47,12 @@ export const sendEmail = async (prevState: State, formData: FormData): Promise<S
 
     // Send the email using Resend
     const { data, error } = await resend.emails.send({
-      from: `Etherwave Labs <mo-reply@etherwavelabs.com>`,
-      to: ['etherwavelabs@gmail.com', 'thomas.cosialls@gmail.com'],
+      from: `Etherwave Labs <no-reply@etherwavelabs.com>`,
+      to: [
+        'etherwavelabs@gmail.com',
+        'thomas.cosialls@gmail.com',
+        'esteban.pattin.bas06@gmail.com',
+      ],
       subject: `🚀 New message from ${name}`,
       react: EmailTemplate({ name, email, message, company, budget }),
     })

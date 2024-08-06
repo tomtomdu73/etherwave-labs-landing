@@ -119,7 +119,7 @@ export default function ContactForm() {
     <FadeIn className="lg:order-last">
       <form action={sendEmailAction} ref={contactForm}>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
-          <TextInput label="Name*" type="text" name="name" autoComplete="name" required />
+          <TextInput label="Full Name*" type="text" name="name" autoComplete="name" required />
           <TextInput label="Email*" type="email" name="email" autoComplete="email" required />
           <TextInput
             name={'company'}
